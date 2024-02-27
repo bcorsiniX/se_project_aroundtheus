@@ -51,3 +51,9 @@ BEM methodology was used to create a header, user profile, a list of cards, and 
 
 Cascading Style Sheet was used to add custom styles, position elements, and create a responsive design using media queries at the breaking points of 325 for mobile, 800 for tablet, and 1280 for desktop.
 ![preview of CSS](<Screenshot (53).png>)
+
+---
+
+[View Project on Github](https://github.com/bcorsiniX/se_project_aroundtheus)
+
+---
