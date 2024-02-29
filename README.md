@@ -21,7 +21,7 @@
 
 **Intro**
 
-This project is made so all the elements are displayed correctly on popular screen sizes; mobile: 325, tablet: 800, and desktop: 1280. This is the first TripleTen project created from scratch only using the Figma design and a few directional videos.
+This project is made so all the elements are displayed correctly on popular screen sizes; mobile: 320, tablet: 800, and desktop: 1280. This is the first TripleTen project created from scratch only using the Figma design and a few directional videos.
 
 ---
 
@@ -49,7 +49,7 @@ BEM methodology was used to create a header, user profile, a list of cards, and 
 
 **CSS**
 
-Cascading Style Sheet was used to add custom styles, position elements, and create a responsive design using media queries at the breaking points of 325 for mobile, 800 for tablet, and 1280 for desktop.
+Cascading Style Sheet was used to add custom styles, position elements, and create a responsive design using media queries at the breaking points of 320 for mobile, 800 for tablet, and 1280 for desktop.
 ![preview of CSS](<Screenshot (53).png>)
 
 ---

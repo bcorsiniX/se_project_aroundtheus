@@ -2,13 +2,14 @@
   max-width: 318px;
   max-height: 18px;
   color: white;
-  font-family: "Inter", Arial;
+  font-family: "Inter", Arial, sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 1.21;
   width: 100%;
   padding-left: 15%;
   padding-top: 67px;
+  padding-bottom: 60px;
 }
 
 @media screen and (max-width: 900px) {

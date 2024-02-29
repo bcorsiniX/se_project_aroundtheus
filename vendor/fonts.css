@@ -13,3 +13,11 @@
   font-display: swap;
   src: url(./fonts/Inter-Medium.woff2) format("woff2");
 }
+
+@font-face {
+  font-family: "Arial";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(./fonts/arial.ttf) format("ttf");
+}
