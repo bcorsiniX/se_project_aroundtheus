@@ -54,8 +54,10 @@ Cascading Style Sheet was used to add custom styles, position elements, and crea
 
 ---
 
-[View Project on Github](https://github.com/bcorsiniX/se_project_aroundtheus)
+[View Project](https://<bcorsiniX>.github.io/<se_project_aroundtheus>)
 
 ---
 
 [Video Tour](https://1drv.ms/v/s!AnSBN2FqN-DshhSOmZlW3yylptex?e=tPbKD8)
+
+---
