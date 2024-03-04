@@ -75,6 +75,7 @@
   margin-left: auto;
   border: 2px rgba(255, 255, 255, 1) solid;
   cursor: pointer;
+  box-sizing: border-box;
   transition: opacity 0.2s ease;
   border-radius: 3%;
 }
@@ -86,6 +87,10 @@
 @media screen and (max-width: 633px) {
   .profile {
     flex-direction: column;
+  }
+
+  .profile__image {
+    margin: 0;
   }
 
   .profile__info {
@@ -118,5 +123,6 @@
     margin: 0;
     width: 100%;
     max-width: 282px;
+    box-sizing: border-box;
   }
 }
