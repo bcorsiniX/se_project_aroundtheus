@@ -8,13 +8,13 @@
   padding-bottom: 37px;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 633px) {
   .header {
-    max-height: 84px;
     margin: 0;
   }
 
   .header__logo {
+    background: transparent url(../images/logo-small.svg) no-repeat center;
     margin-top: 28px;
     margin-left: 27px;
     max-width: 126px;

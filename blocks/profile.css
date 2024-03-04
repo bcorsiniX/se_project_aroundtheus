@@ -10,6 +10,7 @@
   width: 120px;
   height: 120px;
   object-fit: cover;
+  border-radius: 50%;
   background-position: center;
   margin-right: 24px;
   padding-bottom: 30px;
@@ -77,7 +78,7 @@
   cursor: pointer;
   box-sizing: border-box;
   transition: opacity 0.2s ease;
-  border-radius: 3%;
+  border-radius: 2px;
 }
 
 .profile__add-button:hover {
@@ -114,8 +115,8 @@
   }
 
   .profile__edit-button {
-    width: 18px;
-    height: 18px;
+    background: transparent url(../images/edit-button-small.svg) no-repeat
+      center;
     padding-left: 10px;
   }
 
