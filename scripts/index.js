@@ -31,11 +31,11 @@ const profileEditCloseButton = document.querySelector('#profileEditClose-Button'
 
 
 profileEditButton.addEventListener('click', function () {
-  profileEditModal.classList.add('.modal_opened');
+  profileEditModal.style.removeProperty('display:none');
 })
 
 profileEditCloseButton.addEventListener('click', function () {
-  profileEditModal.classList.remove('.modal_opened');
+  profileEditModal.style.addProperty('display:none');
 })
 
 
