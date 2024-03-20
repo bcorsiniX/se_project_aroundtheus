@@ -27,14 +27,14 @@
             class="profile__image"
           />
           <div class="profile__info">
-            <h1 class="profile__title">Jacques Cousteau</h1>
+            <h1 id="profile-name" class="profile__title">Jacques Cousteau</h1>
             <button
               type="button"
               aria-label="edit profile"
               class="profile__edit-button"
               id="profile-edit-button"
             ></button>
-            <p class="profile__description">Explorer</p>
+            <p id="profile-description" class="profile__description">Explorer</p>
           </div>
           <button
             type="button"
@@ -142,7 +142,7 @@
     <footer class="footer">
       <p class="footer__text">&copy; 2022 Around The U.S.</p>
     </footer>
-    <div class="modal modal_opened" id="profileEditModal">
+    <div class="modal" id="profileEditModal">
       <div class="modal__container">
         <button
           title="close"
@@ -152,8 +152,8 @@
         ></button>
         <p class="modal__heading">Edit Profile</p>
         <form class="modal__form">
-          <input placeholder="User Name" class="modal__input" type="text" name="title" />
-          <input placeholder="Description" class="modal__input" type="text" name="description" />
+          <input id="profile-name-input" placeholder="User Name" class="modal__input" type="text" name="title" />
+          <input id="profile-description-input" placeholder="Description" class="modal__input" type="text" name="description" />
           <button title="save" type="button" class="modal__save-button">
             Save
           </button>
