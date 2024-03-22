@@ -44,7 +44,7 @@
         </section>
 
         <section class="cards page__section">
-          <ul class="cards__list">
+          <ul id="cards-list" class="cards__list">
             
           </ul>
         </section>
@@ -71,22 +71,23 @@
         </form>
       </div>
     </div>
+    <template id="card-template"><li class="card">
+      <img
+        src=""
+        alt=""
+        class="card__image"
+      />
+      <div class="card__description">
+        <h2 class="card__title"></h2>
+        <button
+          type="button"
+          aria-label="like"
+          class="card__like-button"
+        ></button>
+      </div>
+    </li></template>
     <script src="./scripts/index.js">
-      <template id="card-template"><li class="card">
-              <img
-                src=""
-                alt=""
-                class="card__image"
-              />
-              <div class="card__description">
-                <h2 class="card__title"></h2>
-                <button
-                  type="button"
-                  aria-label="like"
-                  class="card__like-button"
-                ></button>
-              </div>
-            </li></template>
+ 
     </script>
   </body>
 </html>
