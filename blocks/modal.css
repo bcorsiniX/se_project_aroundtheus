@@ -41,7 +41,7 @@
 
 .modal__heading {
   width: 100%;
-  padding-bottom: 64px;
+  padding-bottom: 75px;
   margin: 0;
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-weight: 900;
@@ -91,7 +91,6 @@
 @media screen and (max-width: 480px) {
 .modal__container {
   width: 282px;
-  height: 322px;
   border: 1px solid rgba(0, 0, 0, 1);
   margin-left: 19px;
   margin-right: 19px;
@@ -121,6 +120,14 @@
 
 .modal__input {
   width: 100%;
+  padding-bottom: 13px;
+}
+
+.modal__input::placeholder {
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.21;
 }
 
 .modal__save-button {
