@@ -93,7 +93,7 @@ const cardElement = getCardElement(cardData);
   cardsListEl.prepend(cardElement);
 });
 
-newPlaceButton.addEventListener('click', openModal(newPlaceModal));
+newPlaceButton.addEventListener('click', () => openModal(newPlaceModal));
 
 newPlaceCloseButton.addEventListener('click', () => closeModal(newPlaceModal));
 
