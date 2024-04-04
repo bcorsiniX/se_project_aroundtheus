@@ -42,10 +42,9 @@ const newPlaceModal = document.querySelector('#newPlaceModal');
 const newPlaceTitleInput = document.querySelector('#newPlaceTitle-input');
 const newPlaceImageURLInput = document.querySelector('#newPlaceImageURL-input');
 const newPlaceCloseButton = document.querySelector('#newPlaceClose-Button');
-const newPlaceModalForm = document.querySelector('#newPlaceModal-form');
-const likeButtons = document.querySelectorAll('.card__like-button');
+const newPlaceModalForm = newPlaceModal.querySelector('#newPlaceModal-form');
 
-            //FUNCTIONS
+//FUNCTIONS
 function closeModal(modal) {
   modal.classList.remove('modal_opened');
 }
@@ -58,12 +57,20 @@ function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector('.card__image');
   const cardTitleEl = cardElement.querySelector('.card__title'); 
+  const likeButton = cardElement.querySelectorAll('.card__like-button');
 
-  
+    likeButton.addEventListener('click', () => {
+    likeButton.classList.toggle('card__like-button_active');
+  });
+ 
+ 
   cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
-  return cardElement;
+
+
+
+return cardElement;
 }
 
             //HANDLERS
@@ -115,8 +122,5 @@ newPlaceCloseButton.addEventListener('click', () => closeModal(newPlaceModal));
 
 newPlaceModalForm.addEventListener('submit', handleNewPlaceSubmit);
 
-likeButtons.forEach((likeButton) => {
-likeButton.addEventListener('click', () => {
-  likeButton.classList.toggle('card__like-button_active');
-});
-});
+
+
