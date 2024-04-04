@@ -40,6 +40,7 @@ const cardsListEl = document.querySelector('#cards-list');
 const newPlaceButton = document.querySelector('#newPlaceButton');
 const newPlaceModal = document.querySelector('#newPlaceModal');
 const newPlaceCloseButton = document.querySelector('#newPlaceClose-Button');
+const newPlaceModalForm = document.querySelector('#newPlaceModal-form');
 
             //FUNCTIONS
 function closeModal(modal) {
@@ -71,6 +72,17 @@ function handleProfileEditSubmit(e) {
   closeModal(profileEditModal);
 }
 
+function handleNewPlaceSubmit(e) {
+  e.preventDefault();
+  const cardElement = getCardElement(cardData);
+  const newPlaceTitleInput = newPlaceModal.querySelector('#newPlaceTitle-input');
+  const imageLinkInput = newPlaceModal.querySelector('#imageLink-input');
+  newPlaceTitleInput.value = cardData.name;
+  imageLinkInput.value = cardData.link;
+  cardsListEl.prepend(cardElement);
+  closeModal(newPlaceModal);
+}
+
             //LISTENERS
 
 profileEditButton.addEventListener('click', () => {
@@ -97,3 +109,4 @@ newPlaceButton.addEventListener('click', () => openModal(newPlaceModal));
 
 newPlaceCloseButton.addEventListener('click', () => closeModal(newPlaceModal));
 
+newPlaceModalForm.addEventListener('submit', handleNewPlaceSubmit);
