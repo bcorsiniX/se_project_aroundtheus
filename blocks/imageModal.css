@@ -1,0 +1,35 @@
+.image-modal {
+position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 0;
+  z-index: 999;
+  justify-content: center;
+  background: none;
+}
+
+.image-modal__container {
+   max-width: 75vw;
+   max-height: 75vh;
+   display: flex;
+}
+
+.image-modal__image {
+    width: 100%;
+    object-fit: cover;
+}
+
+.image-modal__close-button {
+    position: absolute;
+    top: -45px;
+    right: 45px;
+    width: 40px;
+    height: 40px;
+    background: url(../images/Close\ Icon.svg) no-repeat;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    background-size: contain;
+}

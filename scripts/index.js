@@ -77,8 +77,9 @@ function getCardElement(cardData) {
     imageModalImage.src = cardData.link;
     imageModalImage.alt = cardData.name;
     imageModalCaption.textContent = cardData.name;
-    closeModal(imageModal);
-  });
+    });
+
+    imageModalCloseButton.addEventListener('click', () => closeModal(imageModal));
 
   cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
