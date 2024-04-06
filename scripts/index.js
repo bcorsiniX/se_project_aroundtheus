@@ -59,6 +59,10 @@ function getCardElement(cardData) {
   const cardTitleEl = cardElement.querySelector('.card__title'); 
   const likeButton = cardElement.querySelector('.card__like-button');
   const deleteButton = cardElement.querySelector('.card__delete-button');
+  const imageModal = document.querySelector('.image-modal');
+  const imageModalImage = imageModal.querySelector('.image-modal__image');
+  const imageModalCaption = imageModal.querySelector('.image-modal__caption');
+  const imageModalCloseButton = imageModal.querySelector('.image-modal__close-button');
 
   deleteButton.addEventListener('click', () => {
     cardElement.remove();
@@ -68,15 +72,19 @@ function getCardElement(cardData) {
     likeButton.classList.toggle('card__like-button_active');
   });
  
+  cardImageEl.addEventListener('click', () => {
+    openModal(imageModal);
+    imageModalImage.src = cardData.link;
+    imageModalImage.alt = cardData.name;
+    imageModalCaption.textContent = cardData.name;
+    closeModal(imageModal);
+  });
 
- 
   cardTitleEl.textContent = cardData.name;
   cardImageEl.src = cardData.link;
   cardImageEl.alt = cardData.name;
 
-  
-
-return cardElement;
+  return cardElement;
 }
 
             //HANDLERS

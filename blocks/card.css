@@ -4,6 +4,7 @@
   border-radius: 10px;
   list-style-type: none;
   overflow: hidden;
+  position: relative;
 }
 
 .card__image {
@@ -59,7 +60,7 @@
   background: transparent url(../images/Trash.svg);
   width: 18px;
   height: 19.3px;
-  position: absolute;;
+  position: absolute;
   top: 15px;
   right: 18px;
   border: none;
