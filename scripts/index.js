@@ -43,6 +43,10 @@ const newPlaceTitleInput = document.querySelector('#newPlaceTitle-input');
 const newPlaceImageURLInput = document.querySelector('#newPlaceImageURL-input');
 const newPlaceCloseButton = document.querySelector('#newPlaceClose-Button');
 const newPlaceModalForm = newPlaceModal.querySelector('#newPlaceModal-form');
+const imageModal = document.querySelector('.image-modal');
+const imageModalImage = imageModal.querySelector('.image-modal__image');
+const imageModalCaption = imageModal.querySelector('.image-modal__caption');
+const imageModalCloseButton = imageModal.querySelector('.image-modal__close-button');
 
 //FUNCTIONS
 function closeModal(modal) {
@@ -58,11 +62,9 @@ function getCardElement(cardData) {
   const cardImageEl = cardElement.querySelector('.card__image');
   const cardTitleEl = cardElement.querySelector('.card__title'); 
   const likeButton = cardElement.querySelector('.card__like-button');
+  
   const deleteButton = cardElement.querySelector('.card__delete-button');
-  const imageModal = document.querySelector('.image-modal');
-  const imageModalImage = imageModal.querySelector('.image-modal__image');
-  const imageModalCaption = imageModal.querySelector('.image-modal__caption');
-  const imageModalCloseButton = imageModal.querySelector('.image-modal__close-button');
+  
 
   deleteButton.addEventListener('click', () => {
     cardElement.remove();
@@ -73,10 +75,11 @@ function getCardElement(cardData) {
   });
  
   cardImageEl.addEventListener('click', () => {
-    openModal(imageModal);
+    console.log("hello");
     imageModalImage.src = cardData.link;
     imageModalImage.alt = cardData.name;
     imageModalCaption.textContent = cardData.name;
+    openModal(imageModal);
     });
 
     imageModalCloseButton.addEventListener('click', () => closeModal(imageModal));
