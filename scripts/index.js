@@ -43,10 +43,10 @@ const newPlaceTitleInput = document.querySelector('#newPlaceTitle-input');
 const newPlaceImageURLInput = document.querySelector('#newPlaceImageURL-input');
 const newPlaceCloseButton = document.querySelector('#newPlaceClose-Button');
 const newPlaceModalForm = newPlaceModal.querySelector('#newPlaceModal-form');
-const imageModal = document.querySelector('.image-modal');
-const imageModalImage = imageModal.querySelector('.image-modal__image');
-const imageModalCaption = imageModal.querySelector('.image-modal__caption');
-const imageModalCloseButton = imageModal.querySelector('.image-modal__close-button');
+const imageModal = document.querySelector('#imageModal');
+const imageModalImage = imageModal.querySelector('#modalImage');
+const imageModalCaption = imageModal.querySelector('#modalCaption');
+const imageModalCloseButton = imageModal.querySelector('#imageModal-closeButton');
 
 //FUNCTIONS
 function closeModal(modal) {
@@ -59,18 +59,16 @@ function openModal(modal) {
 
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
-  const cardImageEl = cardElement.querySelector('.card__image');
-  const cardTitleEl = cardElement.querySelector('.card__title'); 
-  const likeButton = cardElement.querySelector('.card__like-button');
+  const cardImageEl = cardElement.querySelector('#card-image');
+  const cardTitleEl = cardElement.querySelector('#card-title'); 
+  const likeButton = cardElement.querySelector('#card-likeButton');
+  const deleteButton = cardElement.querySelector('#card-deleteButton');
   
-  const deleteButton = cardElement.querySelector('.card__delete-button');
-  
+  cardTitleEl.textContent = cardData.name;
+  cardImageEl.src = cardData.link;
+  cardImageEl.alt = cardData.name;
 
-  deleteButton.addEventListener('click', () => {
-    cardElement.remove();
-  });
-
-    likeButton.addEventListener('click', () => {
+  likeButton.addEventListener('click', () => {
     likeButton.classList.toggle('card__like-button_active');
   });
  
@@ -84,9 +82,9 @@ function getCardElement(cardData) {
 
     imageModalCloseButton.addEventListener('click', () => closeModal(imageModal));
 
-  cardTitleEl.textContent = cardData.name;
-  cardImageEl.src = cardData.link;
-  cardImageEl.alt = cardData.name;
+  deleteButton.addEventListener('click', () => {
+    cardElement.remove();
+  });
 
   return cardElement;
 }
