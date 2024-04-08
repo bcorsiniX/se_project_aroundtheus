@@ -26,6 +26,11 @@
   box-sizing: border-box;
 }
 
+.modal__container_type_imageModal {
+  padding: 0;
+  background-color: transparent;
+}
+
 .modal__close-button {
   background: url(../images/Close\ Icon.svg) no-repeat;
   position: absolute;
