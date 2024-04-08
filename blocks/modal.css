@@ -28,7 +28,7 @@
 
 .modal__container_type_imageModal {
   padding: 0;
-  background-color: transparent;
+  background-color: none;
 }
 
 .modal__close-button {
