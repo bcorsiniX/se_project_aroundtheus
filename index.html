@@ -56,9 +56,9 @@
     </footer>
     <div class="modal" id="imageModal">
       <div class="modal__container">
-      <button class="modal__close-button" type="button" type="close" aria-label="close"></button>
-      <img src="" alt="" class="modal__image" />
-      <p class="modal__caption"></p>
+      <button class="modal__close-button" type="button" type="close" aria-label="close" id="imageModal-closeButton"></button>
+      <img src="" alt="" class="modal__image" id="modalImage"/>
+      <p class="modal__caption" id="modalCaption"></p>
     </div>
     </div>
     <div class="modal" id="profileEditModal">
@@ -127,14 +127,15 @@
 
     <template id="card-template"
       ><li class="card">
-        <img src="" alt="" class="card__image" />
+        <img src="" alt="" class="card__image" id="card-image"/>
         <div class="card__description">
-          <h2 class="card__title"></h2>
-         <button class="card__delete-button" type="button" aria-label="delete" ></button> 
+          <h2 class="card__title" id="card-title"></h2>
+         <button class="card__delete-button" type="button" aria-label="delete" id="card-deleteButton"></button> 
           <button
             type="button"
             aria-label="like"
             class="card__like-button"
+            id="card-likeButton"
           ></button>
         </div></li
     ></template>
