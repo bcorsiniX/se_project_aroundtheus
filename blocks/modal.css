@@ -139,6 +139,25 @@
   width: 26px;
 }
 
+.modal__container_type_imageModal {
+margin: auto 40px;
+position: relative;
+}
+
+.modal__close_button_type_imageModal {
+position: absolute;
+  height: 26px;
+  width: 26px;
+  top: 0px;
+  right: -90px;
+}
+
+.modal__image {
+ margin-left: 40px;
+ margin-right: 40px;
+
+}
+
 .modal__heading {
   max-width: 238px;
   font-size: 18px;
