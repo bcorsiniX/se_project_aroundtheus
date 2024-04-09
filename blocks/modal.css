@@ -32,6 +32,7 @@
   max-height: 75vh;
   align-items: center;
   padding-bottom: 90px;
+  margin-bottom: 90px;
 }
 
 .modal__close-button {
