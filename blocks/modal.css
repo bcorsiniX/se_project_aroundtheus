@@ -9,10 +9,15 @@
   display: none;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0s, opacity 0.5s linear;
 }
 
 .modal_opened {
   display: flex;
+  opacity: 1;
+  visibility: visible;
 }
 
 .modal__container {
@@ -28,11 +33,25 @@
 
 .modal__container_type_imageModal {
   padding: 0;
+ background-color: transparent;
+ max-width: 100%;
+  max-height: 100%;
+ margin-top: 90px;
+
+}
+
+.modal__image {
   max-width: 75vw;
   max-height: 75vh;
-  align-items: center;
-  padding-bottom: 90px;
-  margin-bottom: 90px;
+}
+
+.modal__caption {
+  color: white;
+  Font: 'Inter', Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.21;
+  font-weight: 400;
+  margin: 0;
 }
 
 .modal__close-button {
