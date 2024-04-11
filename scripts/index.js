@@ -102,6 +102,8 @@ function handleProfileEditSubmit(e) {
   profileName.textContent = profileNameInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
   closeModal(profileEditModal);
+  profileEditForm.reset();
+
 }
 
 function handleNewPlaceSubmit(e) {
@@ -114,6 +116,7 @@ function handleNewPlaceSubmit(e) {
   });
   cardsListEl.prepend(cardElement);
   closeModal(newPlaceModal);
+  newPlaceModalForm.reset();
 }
 
 //LISTENERS
