@@ -72,7 +72,7 @@
   margin: 0;
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-weight: 900;
-  font-size: 24px;
+  font-size: 18px;
   line-height: 1.21;
 }
 
@@ -134,6 +134,7 @@
   right: 0;
   height: 26px;
   width: 26px;
+  padding-bottom: 13px;
 }
 
 .modal__container_type_imageModal {

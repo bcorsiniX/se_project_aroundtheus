@@ -56,10 +56,16 @@
     </footer>
     <div class="modal" id="imageModal">
       <div class="modal__container modal__container_type_imageModal">
-      <button class="modal__close-button modal__close_button_type_imageModal" type="button" type="close" aria-label="close" id="imageModal-closeButton"></button>
-      <img src="" alt="" class="modal__image" id="modalImage"/>
-      <p class="modal__caption" id="modalCaption"></p>
-    </div>
+        <button
+          class="modal__close-button modal__close_button_type_imageModal"
+          type="button"
+          type="close"
+          aria-label="close"
+          id="imageModal-closeButton"
+        ></button>
+        <img src="" alt="" class="modal__image" id="modalImage" />
+        <p class="modal__caption" id="modalCaption"></p>
+      </div>
     </div>
     <div class="modal" id="profileEditModal">
       <div class="modal__container">
@@ -86,7 +92,12 @@
             type="text"
             name="description"
           />
-          <button title="save" type="submit" aria-label="submit" class="modal__save-button">
+          <button
+            title="save"
+            type="submit"
+            aria-label="submit"
+            class="modal__save-button"
+          >
             Save
           </button>
         </form>
@@ -127,10 +138,15 @@
 
     <template id="card-template"
       ><li class="card">
-        <img src="" alt="" class="card__image" id="card-image"/>
+        <img src="" alt="" class="card__image" id="card-image" />
         <div class="card__description">
           <h2 class="card__title" id="card-title"></h2>
-         <button class="card__delete-button" type="button" aria-label="delete" id="card-deleteButton"></button> 
+          <button
+            class="card__delete-button"
+            type="button"
+            aria-label="delete"
+            id="card-deleteButton"
+          ></button>
           <button
             type="button"
             aria-label="like"
