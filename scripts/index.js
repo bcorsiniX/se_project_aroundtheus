@@ -113,6 +113,7 @@ function handleNewPlaceSubmit(e) {
     link,
   });
   cardsListEl.prepend(cardElement);
+  closeModal(newPlaceModal);
 }
 
 //LISTENERS
