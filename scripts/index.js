@@ -95,6 +95,11 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
+function renderCard(item, method = "prepend") {
+  const cardElement = getCardElement(item);
+  cardsListEl[method](cardElement);
+}
+
 //HANDLERS
 
 function handleProfileEditSubmit(e) {
@@ -102,7 +107,6 @@ function handleProfileEditSubmit(e) {
   profileName.textContent = profileNameInput.value;
   profileDescription.textContent = profileDescriptionInput.value;
   closeModal(profileEditModal);
-  profileEditForm.reset();
 
 }
 
@@ -124,6 +128,7 @@ function handleNewPlaceSubmit(e) {
 profileEditButton.addEventListener("click", () => {
   profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
+  profileEditForm.reset();
 
   openModal(profileEditModal);
 });
@@ -133,9 +138,8 @@ profileEditButton.addEventListener("click", () => {
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
 initialCards.forEach((cardData) => {
-  const cardElement = getCardElement(cardData);
-  cardsListEl.prepend(cardElement);
-});
+  renderCard(cardData)});
+
 
 closeButtons.forEach((button) => {
   const modal = button.closest(".modal");
