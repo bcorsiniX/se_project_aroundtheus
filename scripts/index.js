@@ -118,7 +118,7 @@ function handleNewPlaceSubmit(e) {
     name,
     link,
   });
-  cardsListEl.prepend(cardElement);
+  renderCard(cardElement);
   closeModal(newPlaceModal);
   newPlaceModalForm.reset();
 }
@@ -128,7 +128,6 @@ function handleNewPlaceSubmit(e) {
 profileEditButton.addEventListener("click", () => {
   profileNameInput.value = profileName.textContent;
   profileDescriptionInput.value = profileDescription.textContent;
-  profileEditForm.reset();
 
   openModal(profileEditModal);
 });
