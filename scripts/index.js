@@ -112,13 +112,15 @@ function handleProfileEditSubmit(e) {
 
 function handleNewPlaceSubmit(e) {
   e.preventDefault();
+
   const name = newPlaceTitleInput.value;
   const link = newPlaceImageURLInput.value;
-  const cardElement = getCardElement({
+  const cardData = getCardElement({
     name,
     link,
   });
-  renderCard(cardElement);
+  renderCard(cardData);
+
   closeModal(newPlaceModal);
   newPlaceModalForm.reset();
 }
