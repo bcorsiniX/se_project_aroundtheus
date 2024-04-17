@@ -114,10 +114,7 @@ function handleNewPlaceSubmit(e) {
   e.preventDefault();
   const name = newPlaceTitleInput.value;
   const link = newPlaceImageURLInput.value;
-  const cardData = getCardElement({
-    name,
-    link,
-  });
+  const cardData = { name, link};
   renderCard(cardData);
   closeModal(newPlaceModal);
   newPlaceModalForm.reset();
