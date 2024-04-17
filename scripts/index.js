@@ -112,7 +112,6 @@ function handleProfileEditSubmit(e) {
 
 function handleNewPlaceSubmit(e) {
   e.preventDefault();
-
   const name = newPlaceTitleInput.value;
   const link = newPlaceImageURLInput.value;
   const cardData = getCardElement({
@@ -120,7 +119,6 @@ function handleNewPlaceSubmit(e) {
     link,
   });
   renderCard(cardData);
-
   closeModal(newPlaceModal);
   newPlaceModalForm.reset();
 }
