@@ -84,14 +84,22 @@
             class="modal__input"
             type="text"
             name="title"
+            required
+            minlength="2"
+            maxlength="40"
           />
+          <span class="modal__error profile-name-input-error"></span>
           <input
             id="profile-description-input"
             placeholder="Description"
             class="modal__input"
             type="text"
             name="description"
+            required
+            minlength="2"
+            maxlength="200"
           />
+          <span class="modal__error profile-description-input-error"></span>
           <button
             title="save"
             type="submit"
