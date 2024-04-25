@@ -1,16 +1,14 @@
-// enabling validation by calling enableValidation()
-// pass all the settings on call
 
-const setEventListeners = (form, config) => {
-    const {inputSelector} = config;
+function setEventListeners (form, options) {
+    const {inputSelector} = options;
     inputList = [...form.querySelectorAll(inputSelector)];
-    console.log(inputList);
-
+    inputList.addEventListener('input', (evt) => {
+     console.log(evt);
+    });
 }
 
 const enableValidation = (options) => {
     const formList = [...document.querySelectorAll(options.formSelector)];
-    console.log(options);
     formList.forEach((form) => {
         form.addEventListener("submit", (evt) => {
             evt.preventDefault();
@@ -20,7 +18,7 @@ const enableValidation = (options) => {
     });
 }
 
-const config = {
+const options = {
     formSelector: ".modal",
     inputSelector: ".modal__input",
     submitButtonSelector: ".modal__save-button",
@@ -29,5 +27,5 @@ const config = {
     errorClass: "modal__error_visible"
   };
 
-  console.log(config);
-  console.log("HELLO");
+enableValidation(options);
+setEventListeneres(form, inputList, options);
