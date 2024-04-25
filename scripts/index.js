@@ -101,7 +101,7 @@ function renderCard(item, method = "prepend") {
 }
 
 //HANDLERS
-
+console.log(WTF);
 function handleProfileEditSubmit(e) {
   e.preventDefault();
   profileName.textContent = profileNameInput.value;
