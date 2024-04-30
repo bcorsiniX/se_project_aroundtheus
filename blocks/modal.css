@@ -82,8 +82,6 @@
   display: flex;
   flex-direction: column;
   row-gap: 19px;
-
-  
 }
 
 .modal__input {
@@ -105,6 +103,20 @@
   line-height: 1.21;
 }
 
+.modal__input_type_error {
+  color: #FF0000;
+  font-style: underline;
+  font-family: 'Inter', Arial, sans-serif;
+  font-size: 12px;
+  line-height: 1.21;
+  border-bottom: none;
+  border-bottom: 1px solid #FF0000;
+}
+
+.modal__error_visible {
+  border: none;
+}
+
 .modal__save-button {
   margin-top: 28.76px;
   border-radius: 2px;
@@ -117,6 +129,14 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 1.21;
+}
+
+.modal__save-button:hover {
+  background-color: (0,0,0,.8);
+}
+
+.modal__button_disabled {
+  background-color: #FFFFFF;
 }
 
 @media screen and (max-width: 480px) {
