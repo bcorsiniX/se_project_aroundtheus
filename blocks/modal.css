@@ -104,21 +104,23 @@
 }
 
 .modal__input_type_error {
-  color: #FF0000;
-  font-style: underline;
+border-bottom: solid 1px #FF0000;
+}
+
+.modal__error {
   font-family: 'Inter', Arial, sans-serif;
   font-size: 12px;
   line-height: 1.21;
-  border-bottom: none;
-  border-bottom: 1px solid #FF0000;
+  color:#FF0000;
+  visibility: hidden;
 }
 
 .modal__error_visible {
-  border: none;
+visibility: visible;
 }
 
 .modal__save-button {
-  margin-top: 28.76px;
+  margin-top: 0;
   border-radius: 2px;
   background-color: #000000;
   cursor: pointer;
@@ -135,8 +137,10 @@
   background-color: (0,0,0,.8);
 }
 
-.modal__button_disabled {
+.modal__save-button_disabled {
   background-color: #FFFFFF;
+  color: #000000;
+  opacity: .2;
 }
 
 @media screen and (max-width: 480px) {

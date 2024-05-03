@@ -1,3 +1,7 @@
+
+//\/\/\/\/\/\/\/\/\/\/\/\/\___VARIABLES___/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
+
 const initialCards = [
   {
     name: "Yosemite Valley",
@@ -24,8 +28,6 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
   },
 ];
-
-//VARIABLES
 
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profileEditModal");
@@ -56,7 +58,10 @@ const imageModalCloseButton = imageModal.querySelector(
 );
 const closeButtons = document.querySelectorAll(".modal__close-button");
 
-//FUNCTIONS
+
+//\/\/\/\/\/\/\/\/\/\/\___FUNCTIONS___/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
+
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
 }
@@ -87,7 +92,6 @@ function getCardElement(cardData) {
     openModal(imageModal);
   });
 
-
   deleteButton.addEventListener("click", () => {
     cardElement.remove();
   });
@@ -100,7 +104,21 @@ function renderCard(item, method = "prepend") {
   cardsListEl[method](cardElement);
 }
 
-//HANDLERS
+function closeModalOnEsc() {
+  const modals = [...document.querySelectorAll('.modal')]
+  modals.forEach((modal) => {
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeModal(modal);
+      }
+    });
+  });
+}
+closeModalOnEsc();
+
+
+//\/\/\/\/\/\/\/\/\/\/\/\___HANDLERS___/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
 
 function handleProfileEditSubmit(e) {
   e.preventDefault();
@@ -120,7 +138,9 @@ function handleNewPlaceSubmit(e) {
   newPlaceModalForm.reset();
 }
 
-//LISTENERS
+
+//\/\/\/\/\/\/\/\/\/\/\/\/\___LISTENERS___/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
 
 profileEditButton.addEventListener("click", () => {
   profileNameInput.value = profileName.textContent;
@@ -128,8 +148,6 @@ profileEditButton.addEventListener("click", () => {
 
   openModal(profileEditModal);
 });
-
-
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
@@ -144,5 +162,23 @@ closeButtons.forEach((button) => {
 
 newPlaceButton.addEventListener("click", () => openModal(newPlaceModal));
 
-
 newPlaceModalForm.addEventListener("submit", handleNewPlaceSubmit);
+
+document.addEventListener('click', (e) => {
+  const modals = [...document.querySelectorAll('.modal')];
+modals.forEach((modal) => {
+    if (!e.target === modal) {
+      closeModal();
+    }
+})
+});
+
+
+
+document.addEventListener('click', (e) => {
+  const modal = [...document.querySelectorAll('.modal')]
+  if (!e.target.closest('.modal')) {
+  closeModal(modal);
+}
+});
+

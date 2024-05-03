@@ -41,7 +41,7 @@
           <button
             type="button"
             aria-label="add profile"
-            class="profile__add-button"
+            class="profile__add-button modal__button"
             id="newPlaceButton"
           ></button>
         </section>
@@ -57,7 +57,7 @@
     <div class="modal" id="imageModal">
       <div class="modal__container modal__container_type_imageModal">
         <button
-          class="modal__close-button modal__close_button_type_imageModal"
+          class="modal__close-button modal__close-button_type_imageModal"
           type="button"
           type="close"
           aria-label="close"
@@ -73,7 +73,7 @@
           aria-label:="close"
           title="close"
           type="button"
-          class="modal__close-button"
+          class="modal__close-button modal__button"
           id="profileEditClose-Button"
         ></button>
         <p class="modal__heading">Edit Profile</p>
@@ -81,25 +81,25 @@
           <input
             id="profile-name-input"
             placeholder="User Name"
-            class="modal__input"
+            class="modal__input  modal__input_type_error"
             type="text"
             name="title"
             required
             minlength="2"
             maxlength="40"
           />
-          <span class="modal__error_visible modal__input_type_error" id="profile-name-input-error"></span>
+          <span class="modal__error modal__error_visible" id="profile-name-input-error"></span>
           <input
             id="profile-description-input"
             placeholder="Description"
-            class="modal__input"
+            class="modal__input modal__input_type_error"
             type="text"
             name="description"
             required
             minlength="2"
             maxlength="200"
           />
-          <span class="modal__error_visible modal__input_type_error"  id="profile-description-input-error"></span>
+          <span class="modal__error modal__error_visible"  id="profile-description-input-error"></span>
           <button
             title="save"
             type="submit"
