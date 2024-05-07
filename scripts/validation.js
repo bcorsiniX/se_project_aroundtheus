@@ -20,9 +20,9 @@ function setEventListeners(formElement, options) {
   });
 }
 function hasInvalidInput(inputList) {
-  return !inputList.every((inputElement) => {
-    inputElement.validity.valid;
-  });
+  return !inputList.every((inputElement) => 
+    inputElement.validity.valid
+  );
 }
 
 function enableSubmitButton(submitButton, options) {
@@ -38,7 +38,6 @@ function toggleButtonState(inputList, submitButton, options) {
     return;
   }
   submitButton.classList.remove(inactiveButtonClass);
-  console.log(inactiveButtonClass);
   submitButton.disable = false;
 }
 
@@ -58,11 +57,11 @@ function hideInputError(formElement, inputElement) {
   errorMessageEl.textContent = "";
 }
 
-function checkInputValidity(formElement, inputElement, options) {
+function checkInputValidity(formElement, inputElement) {
   if (!inputElement.validity.valid) {
     return showInputError(formElement, inputElement);
   }
-  hideInputError(formElement, inputElement, options);
+  hideInputError(formElement, inputElement);
 }
 
 const options = {
