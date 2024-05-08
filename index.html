@@ -34,7 +34,9 @@
               class="profile__edit-button"
               id="profile-edit-button"
             ></button>
-            <p id="profile-description" class="profile__description">Explorer</p>
+            <p id="profile-description" class="profile__description">
+              Explorer
+            </p>
           </div>
           <button
             type="button"
@@ -76,28 +78,38 @@
         ></button>
         <p class="modal__heading">Edit Profile</p>
         <form id="modal-form" class="modal__form">
-          <input
-            id="profile-name-input"
-            placeholder="User Name"
-            class="modal__input"
-            type="text"
-            name="title"
-            required
-            minlength="2"
-            maxlength="40"
-          />
-          <span class="modal__error modal__error_visible" id="profile-name-input-error"></span>
-          <input
-            id="profile-description-input"
-            placeholder="Description"
-            class="modal__input modal__input_type_description"
-            type="text"
-            name="description"
-            required
-            minlength="2"
-            maxlength="200"
-          />
-          <span class="modal__error modal__error_visible"  id="profile-description-input-error"></span>
+          <label for="User Name" class="modal__label">
+            <input
+              id="profile-name-input"
+              placeholder="User Name"
+              class="modal__input"
+              type="text"
+              name="title"
+              required
+              minlength="2"
+              maxlength="40"
+            />
+            <span
+              class="modal__error modal__error_visible"
+              id="profile-name-input-error"
+            ></span>
+          </label>
+          <label for="" class="modal__label">
+            <input
+              id="profile-description-input"
+              placeholder="Description"
+              class="modal__input"
+              type="text"
+              name="description"
+              required
+              minlength="2"
+              maxlength="200"
+            />
+            <span
+              class="modal__error modal__error_visible"
+              id="profile-description-input-error"
+            ></span>
+          </label>
           <button
             title="save"
             type="submit"
@@ -127,14 +139,26 @@
             class="modal__input"
             type="text"
             name="title"
+            minlength="1"
+            maxlength="30"
+            required
           />
+          <span
+            id="newPlaceTitle-input-error"
+            class="modal__error modal__error_visible"
+          ></span>
           <input
             id="newPlaceImageURL-input"
             placeholder="Image URL"
             class="modal__input"
-            type="link"
+            type="URL"
             name="Image Link"
+            require
           />
+          <span
+            id="newPlaceImageURL-input-error"
+            class="modal__error modal__error_visible"
+          ></span>
           <button title="Create" type="submit" class="modal__save-button">
             Create
           </button>

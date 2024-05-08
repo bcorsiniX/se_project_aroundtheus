@@ -23,7 +23,7 @@
   background-color: white;
   position: relative;
   max-width: 430px;
-  max-height: 330px;
+  height: 360px;
   margin: auto;
   padding: 36px;
   border-radius: 10px;
@@ -68,7 +68,7 @@
 
 .modal__heading {
   width: 100%;
-  padding-bottom: 54px;
+  padding-bottom: 24px;
   margin: 0;
   font-family: "Inter", Arial, Helvetica, sans-serif;
   font-weight: 900;
@@ -84,11 +84,16 @@
   row-gap: 0px;
 }
 
+.modal__label {
+  position: relative;
+}
+
 .modal__input {
   width: 358px;
   border: none;
   outline: none;
   margin-top: 30px;
+  padding-bottom: 13px;
   background: transparent;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   font-family: "Inter", Arial, Helvetica, sans-serif;
@@ -113,8 +118,8 @@
   font-size: 12px;
   line-height: 1.21;
   color:#FF0000;
-  visibility: hidden;
   margin-top: 5px;
+  visibility: hidden;
 }
 
 .modal__error_visible {
@@ -134,6 +139,8 @@ visibility: visible;
   font-size: 18px;
   line-height: 1.21;
   border: none;
+  position: fixed;
+  top: 335px;
 }
 
 .modal__save-button:hover {
@@ -146,7 +153,7 @@ visibility: visible;
   opacity: .2;
   border: 1px solid;
   border-radius: 2px;
-  margin: 0;
+  margin-top: 30px 0 0;
 }
 
 @media screen and (max-width: 480px) {

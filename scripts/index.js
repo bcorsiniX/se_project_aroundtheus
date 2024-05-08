@@ -60,29 +60,29 @@ const closeButtons = document.querySelectorAll(".modal__close-button");
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
-  modal.removeEventListener('click', handleClickOverlay);
-  document.removeEventListener('keydown', handleEscPress);
+  modal.removeEventListener("click", handleClickOverlay);
+  document.removeEventListener("keydown", handleEscPress);
 }
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  modal.addEventListener('click', handleClickOverlay);
-  document.addEventListener('keydown', handleEscPress);
+  modal.addEventListener("click", handleClickOverlay);
+  document.addEventListener("keydown", handleEscPress);
 }
+
 
 function handleClickOverlay(event) {
   if(Array.from(event.target.classList).includes('modal_opened')) {
-    closeModal;
+    closeModal();
   }
 }
 
 function handleEscPress(event) {
   if (event.key === "Escape") {
-    console.log('ESC BUTTON PRESSED')
-    // closeModal(modal);
+    console.log("ESC BUTTON PRESSED");
+    closeModal();
   }
 }
-
 
 // function closeModalOnEsc() {
 //   const modals = [...document.querySelectorAll(".modal")];
