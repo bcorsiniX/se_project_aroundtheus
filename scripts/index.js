@@ -61,40 +61,39 @@ const closeButtons = document.querySelectorAll(".modal__close-button");
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
   modal.removeEventListener("click", handleClickOverlay);
-  document.removeEventListener("keydown", handleEscPress);
+  document.removeEventListener("keydown", closeModalOnEsc);
 }
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
   modal.addEventListener("click", handleClickOverlay);
-  document.addEventListener("keydown", handleEscPress);
+  document.addEventListener("keydown", closeModalOnEsc());
 }
 
 
-function handleClickOverlay(event) {
-  if(Array.from(event.target.classList).includes('modal_opened')) {
-    closeModal();
-  }
+function handleClickOverlay() {
+  const modals = [...document.querySelectorAll(".modal")];
+  modals.forEach((modal) => {
+    window.addEventListener('click', (e) => {
+      if(Array.from(e.target.classList).includes('modal_opened')) {
+        closeModal(modal);
+      }
+    });
+  });
 }
 
-function handleEscPress(event) {
-  if (event.key === "Escape") {
-    console.log("ESC BUTTON PRESSED");
-    closeModal();
-  }
-}
 
-// function closeModalOnEsc() {
-//   const modals = [...document.querySelectorAll(".modal")];
-//   modals.forEach((modal) => {
-//     window.addEventListener("keydown", (e) => {
-//       if (e.key === "Escape") {
-//         closeModal(modal);
-//       }
-//     });
-//   });
-// }
-// closeModalOnEsc();
+
+ function closeModalOnEsc() {
+   const modals = [...document.querySelectorAll(".modal")];
+   modals.forEach((modal) => {
+     window.addEventListener("keydown", (e) => {
+       if (e.key === "Escape") {
+         closeModal(modal);
+       }
+     });
+   });
+ }
 
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
