@@ -23,7 +23,7 @@
   background-color: white;
   position: relative;
   max-width: 430px;
-  height: 360px;
+  max-height: 330px;
   margin: auto;
   padding: 36px;
   border-radius: 10px;
@@ -119,6 +119,7 @@
   line-height: 1.21;
   color:#FF0000;
   margin-top: 5px;
+  position: absolute;
   visibility: hidden;
 }
 
@@ -139,8 +140,8 @@ visibility: visible;
   font-size: 18px;
   line-height: 1.21;
   border: none;
-  position: fixed;
-  top: 335px;
+ /* position: fixed;
+  top: 335px;*/
 }
 
 .modal__save-button:hover {
