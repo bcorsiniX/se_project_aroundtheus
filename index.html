@@ -94,7 +94,7 @@
               id="profile-name-input-error"
             ></span>
           </label>
-          <label for="" class="modal__label">
+          <label for="Profile Description" class="modal__label">
             <input
               id="profile-description-input"
               placeholder="Description"
@@ -133,32 +133,36 @@
         ></button>
         <p class="modal__heading">New Place</p>
         <form id="newPlaceModal-form" class="modal__form">
-          <input
-            id="newPlaceTitle-input"
-            placeholder="Title"
-            class="modal__input"
-            type="text"
-            name="title"
-            minlength="1"
-            maxlength="30"
-            required
-          />
-          <span
-            id="newPlaceTitle-input-error"
-            class="modal__error modal__error_visible"
-          ></span>
-          <input
-            id="newPlaceImageURL-input"
-            placeholder="Image URL"
-            class="modal__input"
-            type="URL"
-            name="Image Link"
-            require
-          />
-          <span
-            id="newPlaceImageURL-input-error"
-            class="modal__error modal__error_visible"
-          ></span>
+          <label for="Title of New Place" class="modal__label">
+            <input
+              id="newPlaceTitle-input"
+              placeholder="Title"
+              class="modal__input"
+              type="text"
+              name="title"
+              minlength="1"
+              maxlength="30"
+              required
+            />
+            <span
+              id="newPlaceTitle-input-error"
+              class="modal__error modal__error_type_title modal__error_visible"
+            ></span>
+          </label>
+          <label for="Image URL" class="modal__label">
+            <input
+              id="newPlaceImageURL-input"
+              placeholder="Image URL"
+              class="modal__input"
+              type="url"
+              name="Image Link"
+              require
+            />
+            <span
+              id="newPlaceImageURL-input-error"
+              class="modal__error modal__error_type_url modal__error_visible"
+            ></span>
+          </label>
           <button title="Create" type="submit" class="modal__save-button">
             Create
           </button>

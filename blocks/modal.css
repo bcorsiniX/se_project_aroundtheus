@@ -119,8 +119,7 @@
   line-height: 1.21;
   color:#FF0000;
   margin-top: 5px;
-  position: absolute;
-  visibility: hidden;
+  position: absolute
 }
 
 .modal__error_visible {
@@ -140,8 +139,6 @@ visibility: visible;
   font-size: 18px;
   line-height: 1.21;
   border: none;
- /* position: fixed;
-  top: 335px;*/
 }
 
 .modal__save-button:hover {
