@@ -72,9 +72,10 @@ function openModal(modal) {
 
 
 function handleClickOverlay() {
+  const page = document.querySelector(".page");
   const modals = [...document.querySelectorAll(".modal")];
   modals.forEach((modal) => {
-    window.addEventListener('click', (e) => {
+    page.addEventListener('click', (e) => {
       if(Array.from(e.target.classList).includes('modal_opened')) {
         closeModal(modal);
       }
@@ -85,9 +86,10 @@ function handleClickOverlay() {
 
 
  function closeModalOnEsc() {
-   const modals = [...document.querySelectorAll(".modal")];
+  const page = document.querySelector(".page"); 
+  const modals = [...document.querySelectorAll(".modal")];
    modals.forEach((modal) => {
-     window.addEventListener("keydown", (e) => {
+     page.addEventListener("keydown", (e) => {
        if (e.key === "Escape") {
          closeModal(modal);
        }
