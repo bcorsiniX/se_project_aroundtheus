@@ -37,8 +37,7 @@ function toggleButtonState(inputList, submitButton, options) {
     submitButton.disable = true;
     return;
   }
-  submitButton.classList.remove(inactiveButtonClass);
-  submitButton.disable = false;
+  enableSubmitButton(submitButton, options);
 }
 
 function showInputError(formElement, inputElement) {

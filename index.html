@@ -20,35 +20,37 @@
         />
       </header>
       <main class="content">
-        <section class="page__section profile">
-          <img
-            src="./images/Avatar.png"
-            alt="picture of Jacques Cousteau"
-            class="profile__image"
-          />
-          <div class="profile__info">
-            <h1 id="profile-name" class="profile__title">Jacques Cousteau</h1>
+        <div class="content__overlay">
+          <section class="page__section profile">
+            <img
+              src="./images/Avatar.png"
+              alt="picture of Jacques Cousteau"
+              class="profile__image"
+            />
+            <div class="profile__info">
+              <h1 id="profile-name" class="profile__title">Jacques Cousteau</h1>
+              <button
+                type="button"
+                aria-label="edit profile"
+                class="profile__edit-button"
+                id="profile-edit-button"
+              ></button>
+              <p id="profile-description" class="profile__description">
+                Explorer
+              </p>
+            </div>
             <button
               type="button"
-              aria-label="edit profile"
-              class="profile__edit-button"
-              id="profile-edit-button"
+              aria-label="add profile"
+              class="profile__add-button modal__button"
+              id="newPlaceButton"
             ></button>
-            <p id="profile-description" class="profile__description">
-              Explorer
-            </p>
-          </div>
-          <button
-            type="button"
-            aria-label="add profile"
-            class="profile__add-button modal__button"
-            id="newPlaceButton"
-          ></button>
-        </section>
+          </section>
 
-        <section class="cards page__section">
-          <ul id="cards-list" class="cards__list"></ul>
-        </section>
+          <section class="cards page__section">
+            <ul id="cards-list" class="cards__list"></ul>
+          </section>
+        </div>
       </main>
     </div>
     <footer class="footer">
@@ -68,7 +70,7 @@
       </div>
     </div>
     <div class="modal" id="profileEditModal">
-      <div class="modal__container">
+      <div class="modal__container" id="edit-profile-modal">
         <button
           aria-label:="close"
           title="close"
@@ -164,7 +166,6 @@
             ></span>
           </label>
           <button
-        
             title="Create"
             type="submit"
             class="modal__save-button modal__save-button_disabled"
