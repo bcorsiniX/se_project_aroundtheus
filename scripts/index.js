@@ -59,8 +59,7 @@ const closeButtons = document.querySelectorAll(".modal__close-button");
 //\/\/\/\/\/\/\/\/\/\/\___FUNCTIONS___/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
 function closeModal(modal) {
-  const overlay = document.querySelector("#edit-profile-modal");
-  console.log(overlay);
+
   modal.classList.remove("modal_opened");
   document.removeEventListener("click", handleClickOverlay);
   modal.removeEventListener("keydown", closeModalEsc);
@@ -88,15 +87,6 @@ const closeModalEsc = (event) => {
   }
 }
 
-
-/*function closeModalOnEsc(e) {
-  const modals = [...document.querySelectorAll(".modal")];
-   modals.forEach((modal) => {
-       if (e.key === "Escape") {
-         closeModal(modal);
-       }
-   });
- }*/
 
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
