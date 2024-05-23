@@ -59,24 +59,23 @@ const closeButtons = document.querySelectorAll(".modal__close-button");
 //\/\/\/\/\/\/\/\/\/\/\___FUNCTIONS___/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
 function closeModal(modal) {
-
   modal.classList.remove("modal_opened");
   document.removeEventListener("click", handleClickOverlay);
-  modal.removeEventListener("keydown", closeModalEsc);
+  document.removeEventListener("keydown", closeModalEsc);
 }
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
-  modal.addEventListener("click", handleClickOverlay);
+  document.addEventListener("click", handleClickOverlay);
   document.addEventListener("keydown", closeModalEsc);
 }
 
 function handleClickOverlay(e) {
   const modals = [...document.querySelectorAll(".modal")];
   modals.forEach((modal) => {
-      if(Array.from(e.target.classList).includes('modal_opened')) {
-        closeModal(modal);
-      }
+    if (Array.from(e.target.classList).includes("modal_opened")) {
+      closeModal(modal);
+    }
   });
 }
 
@@ -85,8 +84,7 @@ const closeModalEsc = (event) => {
     const openedModal = document.querySelector(".modal_opened");
     closeModal(openedModal);
   }
-}
-
+};
 
 function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
