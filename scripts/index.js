@@ -70,13 +70,12 @@ function openModal(modal) {
   document.addEventListener("keydown", closeModalEsc);
 }
 
+const modals = [...document.querySelectorAll(".modal")];
+
 function handleClickOverlay(e) {
-  const modals = [...document.querySelectorAll(".modal")];
-  modals.forEach((modal) => {
-    if (Array.from(e.target.classList).includes("modal_opened")) {
-      closeModal(modal);
-    }
-  });
+  if (Array.from(e.target.classList).includes("modal_opened")) {
+    modals.forEach(closeModal);
+  }
 }
 
 const closeModalEsc = (event) => {
