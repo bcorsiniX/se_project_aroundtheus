@@ -1,4 +1,7 @@
+import FormValidator from './FormValidator.js';
+
 //\/\/\/\/\/\/\/\/\/\/\/\/\___VARIABLES___/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
 
 const initialCards = [
   {
