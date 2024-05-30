@@ -42,7 +42,7 @@
   enableSubmitButton(submitButton, options);
 }*/
 
-f/*unction showInputError(formElement, inputElement) {
+/*function showInputError(formElement, inputElement) {
   const { inputErrorClass, errorClass } = options;
   const errorMessageEl = formElement.querySelector(`#${inputElement.id}-error`);
   inputElement.classList.add(inputErrorClass);
@@ -74,4 +74,4 @@ const options = {
   errorClass: "modal__error_visible",
 };
 
-enableValidation(options);
+//enableValidation(options);

@@ -1,5 +1,5 @@
-import FormValidator from './components/FormValidator.js';
-import Card from './components/Card.js';
+import FormValidator from '/components/FormValidator.js';
+import Card from '/components/Card.js';
 
 //\/\/\/\/\/\/\/\/\/\/\/\/\___VARIABLES___/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
@@ -161,7 +161,14 @@ newPlaceButton.addEventListener("click", () => openModal(newPlaceModal));
 newPlaceModalForm.addEventListener("submit", handleNewPlaceSubmit);
 
 
-
+const options = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__save-button",
+  inactiveButtonClass: "modal__save-button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
 
 const editFormElement = profileEditModal.querySelector('#modal-form');
 const addFormElement = newPlaceModal.querySelector('#newPlaceModal-form');
