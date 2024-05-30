@@ -1,4 +1,5 @@
-import FormValidator from './FormValidator.js';
+import FormValidator from './components/FormValidator.js';
+import Card from './components/Card.js';
 
 //\/\/\/\/\/\/\/\/\/\/\/\/\___VARIABLES___/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
@@ -32,9 +33,6 @@ const initialCards = [
 
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profileEditModal");
-const profileEditCloseButton = document.querySelector(
-  "#profileEditClose-Button"
-);
 const profileName = document.querySelector("#profile-name");
 const profileDescription = document.querySelector("#profile-description");
 const profileNameInput = document.querySelector("#profile-name-input");
@@ -49,16 +47,12 @@ const newPlaceButton = document.querySelector("#newPlaceButton");
 const newPlaceModal = document.querySelector("#newPlaceModal");
 const newPlaceTitleInput = document.querySelector("#newPlaceTitle-input");
 const newPlaceImageURLInput = document.querySelector("#newPlaceImageURL-input");
-const newPlaceCloseButton = document.querySelector("#newPlaceClose-Button");
 const newPlaceModalForm = document.querySelector("#newPlaceModal-form");
 const imageModal = document.querySelector("#imageModal");
 const imageModalImage = imageModal.querySelector("#modalImage");
 const imageModalCaption = imageModal.querySelector("#modalCaption");
-const imageModalCloseButton = imageModal.querySelector(
-  "#imageModal-closeButton"
-);
 const closeButtons = document.querySelectorAll(".modal__close-button");
-
+const cardSelector = document.querySelector('#card-template');
 //\/\/\/\/\/\/\/\/\/\/\___FUNCTIONS___/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
 function closeModal(modal) {
@@ -119,6 +113,7 @@ function getCardElement(cardData) {
 
 function renderCard(item, method = "prepend") {
   const cardElement = getCardElement(item);
+  //const card = new Card(data, cardSelector);
   cardsListEl[method](cardElement);
 }
 
@@ -164,3 +159,14 @@ closeButtons.forEach((button) => {
 newPlaceButton.addEventListener("click", () => openModal(newPlaceModal));
 
 newPlaceModalForm.addEventListener("submit", handleNewPlaceSubmit);
+
+
+
+
+const editFormElement = profileEditModal.querySelector('#modal-form');
+const addFormElement = newPlaceModal.querySelector('#newPlaceModal-form');
+
+const editFormValidator = new FormValidator (options, editFormElement);
+const addFormValidator = new FormValidator (options, addFormElement);
+editFormValidator.enableValidation();
+addFormValidator.enableValidation();
