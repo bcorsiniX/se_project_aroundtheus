@@ -28,7 +28,7 @@ export default class FormValidator {
 
     _checkInputValidity(formElement, inputElement) {
         if (!inputElement.validity.valid) {
-          return showInputError(formElement, inputElement);
+          return this._showInputError(formElement, inputElement);
         }
         this._hideInputError(formElement, inputElement);
     }
@@ -43,8 +43,7 @@ export default class FormValidator {
 
     _toggleButtonState(inputList, submitButton) {
         if (this._hasInvalidInput(inputList)) {
-            console.log(this._inactiveButtonClass)
-            console.log(submitButton);
+          submitButton = this._formElement.querySelector('.modal__save-button');
           submitButton.classList.add(this._inactiveButtonClass);
           submitButton.disabled = true;
           return;
@@ -54,6 +53,7 @@ export default class FormValidator {
 
 
     _enableSubmitButton(submitButton) {
+        submitButton = this._formElement.querySelector('.modal__save-button');
         submitButton.classList.remove(this._inactiveButtonClass);
         submitButton.disable = false;
     }
@@ -61,7 +61,7 @@ export default class FormValidator {
 
     _setEventListeners() {
         this._inputList = [...this._formElement.querySelectorAll(this._inputSelector)];
-        this._submitButton = this._formElement.querySelectorAll(this._submitButtonSelector);
+        this._submitButton = this._formElement.querySelector(this._submitButtonSelector);
             this._inputList.forEach((inputElement) => {
                 inputElement.addEventListener("input", () => {
                     this._checkInputValidity(this._formElement, inputElement, this._options);

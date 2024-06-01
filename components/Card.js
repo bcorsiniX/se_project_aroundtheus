@@ -26,13 +26,13 @@ export default class Card {
         this._element.remove();
     }
 
-
+    /* FIX OR MOVE//
     handleImageClick() {
         imageModalImage.src = cardData.link;
             imageModalImage.alt = cardData.name;
             imageModalCaption.textContent = cardData.name;
             openModal(imageModal);
-    }
+    }*/
 
 
     _getTemplate() {

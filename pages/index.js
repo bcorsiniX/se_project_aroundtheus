@@ -53,6 +53,7 @@ const imageModalImage = imageModal.querySelector("#modalImage");
 const imageModalCaption = imageModal.querySelector("#modalCaption");
 const closeButtons = document.querySelectorAll(".modal__close-button");
 const cardSelector = document.querySelector('#card-template');
+const submitButton = document.querySelector('.modal__save-button');
 //\/\/\/\/\/\/\/\/\/\/\___FUNCTIONS___/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
 function closeModal(modal) {
