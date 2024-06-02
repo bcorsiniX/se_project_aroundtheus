@@ -2,34 +2,51 @@ import FormValidator from '/components/FormValidator.js';
 import Card from '/components/Card.js';
 
 //\/\/\/\/\/\/\/\/\/\/\/\/\___VARIABLES___/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+const cardSelector = document.querySelector('#card-template');
 
 
-const initialCards = [
-  {
-    name: "Yosemite Valley",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-  },
-  {
-    name: "Lake Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-  },
-  {
-    name: "Bald Mountains",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-  },
-  {
-    name: "Vanoise National Park",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-  },
-];
+//const initialCards
+const cardData1 = {
+  name: "Yosemite Valley",
+  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+}
+const card1 = new Card(cardData1, cardSelector, handleImageClick).getView();
+
+const cardData2 =  {
+  name: "Lake Louise",
+  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
+}
+const card2 = new Card(cardData2, cardSelector, handleImageClick);
+
+const cardData3 = {
+  name: "Bald Mountains",
+  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
+}
+const card3 = new Card(cardData3, cardSelector, handleImageClick);
+
+const cardData4 = {
+  name: "Latemar",
+  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
+}
+const card4 = new Card(cardData4, cardSelector, handleImageClick);
+
+const cardData5 = {
+  name: "Vanoise National Park",
+  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
+}
+const card5 = new Card(cardData5, cardSelector, handleImageClick);
+
+const cardData6 = {
+  name: "Lago di Braies",
+  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
+}
+const card6 = new Card(cardData6, cardSelector, handleImageClick);
+
+
+
+
+
+
 
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profileEditModal");
@@ -52,8 +69,6 @@ const imageModal = document.querySelector("#imageModal");
 const imageModalImage = imageModal.querySelector("#modalImage");
 const imageModalCaption = imageModal.querySelector("#modalCaption");
 const closeButtons = document.querySelectorAll(".modal__close-button");
-const cardSelector = document.querySelector('#card-template');
-const submitButton = document.querySelector('.modal__save-button');
 //\/\/\/\/\/\/\/\/\/\/\___FUNCTIONS___/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
 function closeModal(modal) {
@@ -113,12 +128,13 @@ function getCardElement(cardData) {
 }
 
 function renderCard(item, method = "prepend") {
+    //const card = new Card(data, cardSelector, handleImageClick).getView()
   const cardElement = getCardElement(item);
-  //const card = new Card(data, cardSelector);
   cardsListEl[method](cardElement);
 }
 
 //\/\/\/\/\/\/\/\/\/\/\/\___HANDLERS___/\/\/\/\/\/\/\/\/\/\/\/\/\/\
+
 
 function handleProfileEditSubmit(e) {
   e.preventDefault();
@@ -137,6 +153,13 @@ function handleNewPlaceSubmit(e) {
   newPlaceModalForm.reset();
 }
 
+function handleImageClick(cardData) {
+  imageModalImage.src = cardData.link;
+  imageModalImage.alt = cardData.name;
+  imageModalCaption.textContent = cardData.name;
+  openModal(imageModal);
+}
+
 //\/\/\/\/\/\/\/\/\/\/\/\/\___LISTENERS___/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
 profileEditButton.addEventListener("click", () => {
@@ -148,9 +171,9 @@ profileEditButton.addEventListener("click", () => {
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
-initialCards.forEach((cardData) => {
+/*initialCards.forEach((cardData) => {
   renderCard(cardData);
-});
+});*/
 
 closeButtons.forEach((button) => {
   const modal = button.closest(".modal");
