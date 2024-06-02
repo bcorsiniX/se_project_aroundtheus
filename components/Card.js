@@ -30,16 +30,10 @@ export default class Card {
     this._element.remove();
   }
 
-  _handleImageClick() {
-    this._imageModalImage.src = this._link;
-    this._imageModalImage.alt = this._name;
-    this._imageModalCaption.textContent = this._name;
-    openModal(imageModal);
-  }
 
   _getTemplate() {
     return document
-      .querySelector(this._cardSelector)
+      .querySelector('#card-template')
       .content.querySelector(".card")
       .cloneNode(true);
   }

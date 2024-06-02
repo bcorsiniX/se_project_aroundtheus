@@ -127,10 +127,10 @@ function getCardElement(cardData) {
   return cardElement;
 }
 
-function renderCard(item, method = "prepend") {
-    //const card = new Card(data, cardSelector, handleImageClick).getView()
-  const cardElement = getCardElement(item);
-  cardsListEl[method](cardElement);
+function renderCard(card, method = "prepend") {
+    const card = new Card(data, cardSelector, handleImageClick).getView()
+  //const cardElement = getCardElement(item);
+  cardsListEl[method](card);
 }
 
 //\/\/\/\/\/\/\/\/\/\/\/\___HANDLERS___/\/\/\/\/\/\/\/\/\/\/\/\/\/\
