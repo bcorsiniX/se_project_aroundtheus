@@ -4,33 +4,25 @@ export default class Card {
     this._link = data.link;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
+    this._handleLikeIcon = handleLikeIcon;
+    this._handleDeleteCard = handleDeleteCard;
   }
 
   _setEventListeners() {
     this._element
       .querySelector(".card__like-button")
-      .addEventListener("click", () => handleLikeIcon());
+      .addEventListener("click", () => this._handleLikeIcon(this));
 
     this._element
       .querySelector(".card__delete-button")
-      .addEventListener("click", () => handleDeleteCard());
+      .addEventListener("click", () => this._handleDeleteCard(this));
 
-    this._element.addEventListener("click", () =>
+    this._element.querySelector(".card__image").addEventListener("click", () =>
       this._handleImageClick(this)
     );
   }
 
-  _handleLikeIcon() {
-    this._element
-      .querySelector(".card__like-button")
-      .classList.toggle(".card__like-button_active");
-  }
-
-  _handleDeleteCard() {
-    this._element.remove();
-  }
-
-
+ 
   _getTemplate() {
     return document
       .querySelector('#card-template')

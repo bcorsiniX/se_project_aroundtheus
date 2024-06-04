@@ -1,76 +1,72 @@
-import FormValidator from '/components/FormValidator.js';
-import Card from '/components/Card.js';
+import FormValidator from "/components/FormValidator.js";
+import Card from "/components/Card.js";
 
 //\/\/\/\/\/\/\/\/\/\/\/\/\___VARIABLES___/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-const cardSelector = document.querySelector('#card-template');
+const cardSelector = document.querySelector("#card-template");
 
-const initialCards =  [{
-  name: "Yosemite Valley",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-},
-{
-  name: "Lake Louise",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-},
-{
-  name: "Bald Mountains",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-},
-{
-  name: "Latemar",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-},
-{
-  name: "Vanoise National Park",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-},
-{
-  name: "Lago di Braies",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-}];
+const initialCards = [
+  {
+    name: "Yosemite Valley",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
+  },
+  {
+    name: "Lake Louise",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
+  },
+  {
+    name: "Bald Mountains",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
+  },
+  {
+    name: "Latemar",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
+  },
+  {
+    name: "Vanoise National Park",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
+  },
+];
 
 //const initialCards
 const cardData1 = {
   name: "Yosemite Valley",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-}
-const card1 = new Card(cardData1, cardSelector, handleImageClick).getView();
+};
+const card1 = new Card(cardData1, cardSelector, handleImageClick, handleLikeIcon, handleDeleteCard).getView();
 
-const cardData2 =  {
+const cardData2 = {
   name: "Lake Louise",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-}
-const card2 = new Card(cardData2, cardSelector, handleImageClick).getView();
+};
+const card2 = new Card(cardData2, cardSelector, handleImageClick, handleLikeIcon, handleDeleteCard).getView();
 
 const cardData3 = {
   name: "Bald Mountains",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-}
-const card3 = new Card(cardData3, cardSelector, handleImageClick).getView();
+};
+const card3 = new Card(cardData3, cardSelector, handleImageClick, handleLikeIcon, handleDeleteCard).getView();
 
 const cardData4 = {
   name: "Latemar",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-}
-const card4 = new Card(cardData4, cardSelector, handleImageClick).getView();
+};
+const card4 = new Card(cardData4, cardSelector, handleImageClick, handleLikeIcon, handleDeleteCard).getView();
 
 const cardData5 = {
   name: "Vanoise National Park",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-}
-const card5 = new Card(cardData5, cardSelector, handleImageClick).getView();
+};
+const card5 = new Card(cardData5, cardSelector, handleImageClick, handleLikeIcon, handleDeleteCard).getView();
 
 const cardData6 = {
   name: "Lago di Braies",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-}
-const card6 = new Card(cardData6, cardSelector, handleImageClick).getView();
-
-
-
-
-
-
+};
+const card6 = new Card(cardData6, cardSelector, handleImageClick, handleLikeIcon, handleDeleteCard).getView();
 
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profileEditModal");
@@ -152,13 +148,12 @@ const closeModalEsc = (event) => {
 }*/
 
 function renderCard(cardData, method = "prepend") {
- const card = new Card(cardData, cardSelector, handleImageClick).getView()
-// const cardElement = getCardElement(item);
+  const card = new Card(cardData, cardSelector, handleImageClick).getView();
+  // const cardElement = getCardElement(item);
   cardsListEl[method](card);
 }
 
 //\/\/\/\/\/\/\/\/\/\/\/\___HANDLERS___/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-
 
 function handleProfileEditSubmit(e) {
   e.preventDefault();
@@ -182,6 +177,14 @@ function handleImageClick(cardData) {
   imageModalImage.alt = cardData._name;
   imageModalCaption.textContent = cardData._name;
   openModal(imageModal);
+}
+
+function handleLikeIcon() {
+  classList.toggle(".card__like-button_active");
+}
+
+function handleDeleteCard() {
+  remove();
 }
 
 //\/\/\/\/\/\/\/\/\/\/\/\/\___LISTENERS___/\/\/\/\/\/\/\/\/\/\/\/\/\/\
@@ -208,7 +211,6 @@ newPlaceButton.addEventListener("click", () => openModal(newPlaceModal));
 
 newPlaceModalForm.addEventListener("submit", handleNewPlaceSubmit);
 
-
 const options = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
@@ -218,10 +220,10 @@ const options = {
   errorClass: "modal__error_visible",
 };
 
-const editFormElement = profileEditModal.querySelector('#modal-form');
-const addFormElement = newPlaceModal.querySelector('#newPlaceModal-form');
+const editFormElement = profileEditModal.querySelector("#modal-form");
+const addFormElement = newPlaceModal.querySelector("#newPlaceModal-form");
 
-const editFormValidator = new FormValidator (options, editFormElement);
-const addFormValidator = new FormValidator (options, addFormElement);
+const editFormValidator = new FormValidator(options, editFormElement);
+const addFormValidator = new FormValidator(options, addFormElement);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
