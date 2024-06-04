@@ -38,11 +38,11 @@ export default class FormValidator {
     return !inputList.every((inputElement) => inputElement.validity.valid);
   }
 
-  _toggleButtonState(inputList, submitButton) {
+  _toggleButtonState(inputList) {
     if (this._hasInvalidInput(inputList)) {
-      submitButton = this._formElement.querySelector(".modal__save-button");
-      submitButton.classList.add(this._inactiveButtonClass);
-      submitButton.disabled = true;
+        this._submitButton = this._formElement.querySelector('.modal__save-button');
+        this._submitButton.classList.add(this._inactiveButtonClass);
+        this._submitButton.disabled = true;
       return;
     }
     this._enableSubmitButton(this._submitButton);
@@ -51,13 +51,9 @@ export default class FormValidator {
   _enableSubmitButton() {
     this._submitButton = this._formElement.querySelector('.modal__save-button');
     this._submitButton.classList.remove(this._inactiveButtonClass);
-    this._submitButton.disable = false;
+    this._submitButton.disabled = false;
   }
 
-  disableSubmitButton() {
-    this._submitButton.classList.add(this._inactiveButtonClass);
-    this._submitButton.disable = true;
-  }
 
   _setEventListeners() {
     this._inputList = [
