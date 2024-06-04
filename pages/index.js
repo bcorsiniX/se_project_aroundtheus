@@ -40,31 +40,31 @@ const cardData2 =  {
   name: "Lake Louise",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
 }
-const card2 = new Card(cardData2, cardSelector, handleImageClick);
+const card2 = new Card(cardData2, cardSelector, handleImageClick).getView();
 
 const cardData3 = {
   name: "Bald Mountains",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
 }
-const card3 = new Card(cardData3, cardSelector, handleImageClick);
+const card3 = new Card(cardData3, cardSelector, handleImageClick).getView();
 
 const cardData4 = {
   name: "Latemar",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
 }
-const card4 = new Card(cardData4, cardSelector, handleImageClick);
+const card4 = new Card(cardData4, cardSelector, handleImageClick).getView();
 
 const cardData5 = {
   name: "Vanoise National Park",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
 }
-const card5 = new Card(cardData5, cardSelector, handleImageClick);
+const card5 = new Card(cardData5, cardSelector, handleImageClick).getView();
 
 const cardData6 = {
   name: "Lago di Braies",
   link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
 }
-const card6 = new Card(cardData6, cardSelector, handleImageClick);
+const card6 = new Card(cardData6, cardSelector, handleImageClick).getView();
 
 
 
@@ -122,7 +122,7 @@ const closeModalEsc = (event) => {
   }
 };
 
-function getCardElement(cardData) {
+/*function getCardElement(cardData) {
   const cardElement = cardTemplate.cloneNode(true);
   const cardImageEl = cardElement.querySelector("#card-image");
   const cardTitleEl = cardElement.querySelector("#card-title");
@@ -149,7 +149,7 @@ function getCardElement(cardData) {
   });
 
   return cardElement;
-}
+}*/
 
 function renderCard(cardData, method = "prepend") {
  const card = new Card(cardData, cardSelector, handleImageClick).getView()
@@ -178,9 +178,9 @@ function handleNewPlaceSubmit(e) {
 }
 
 function handleImageClick(cardData) {
-  imageModalImage.src = cardData.link;
-  imageModalImage.alt = cardData.name;
-  imageModalCaption.textContent = cardData.name;
+  imageModalImage.src = cardData._link;
+  imageModalImage.alt = cardData._name;
+  imageModalCaption.textContent = cardData._name;
   openModal(imageModal);
 }
 
