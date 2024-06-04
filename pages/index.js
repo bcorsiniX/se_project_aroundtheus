@@ -31,42 +31,6 @@ const initialCards = [
   },
 ];
 
-//const initialCards
-const cardData1 = {
-  name: "Yosemite Valley",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
-};
-const card1 = new Card(cardData1, cardSelector, handleImageClick, handleLikeIcon, handleDeleteCard).getView();
-
-const cardData2 = {
-  name: "Lake Louise",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lake-louise.jpg",
-};
-const card2 = new Card(cardData2, cardSelector, handleImageClick, handleLikeIcon, handleDeleteCard).getView();
-
-const cardData3 = {
-  name: "Bald Mountains",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/bald-mountains.jpg",
-};
-const card3 = new Card(cardData3, cardSelector, handleImageClick, handleLikeIcon, handleDeleteCard).getView();
-
-const cardData4 = {
-  name: "Latemar",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/latemar.jpg",
-};
-const card4 = new Card(cardData4, cardSelector, handleImageClick, handleLikeIcon, handleDeleteCard).getView();
-
-const cardData5 = {
-  name: "Vanoise National Park",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/vanoise.jpg",
-};
-const card5 = new Card(cardData5, cardSelector, handleImageClick, handleLikeIcon, handleDeleteCard).getView();
-
-const cardData6 = {
-  name: "Lago di Braies",
-  link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/lago.jpg",
-};
-const card6 = new Card(cardData6, cardSelector, handleImageClick, handleLikeIcon, handleDeleteCard).getView();
 
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profileEditModal");
@@ -148,7 +112,7 @@ const closeModalEsc = (event) => {
 }*/
 
 function renderCard(cardData, method = "prepend") {
-  const card = new Card(cardData, cardSelector, handleImageClick).getView();
+  const card = new Card(cardData, cardSelector, handleImageClick, handleLikeIcon, handleDeleteCard).getView();
   // const cardElement = getCardElement(item);
   cardsListEl[method](card);
 }
@@ -180,11 +144,11 @@ function handleImageClick(cardData) {
 }
 
 function handleLikeIcon() {
-  classList.toggle(".card__like-button_active");
+  this._element.querySelector('.card__like-button').classList.toggle("card__like-button_active");
 }
 
 function handleDeleteCard() {
-  remove();
+  this._element.remove();
 }
 
 //\/\/\/\/\/\/\/\/\/\/\/\/\___LISTENERS___/\/\/\/\/\/\/\/\/\/\/\/\/\/\
