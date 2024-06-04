@@ -23,7 +23,7 @@ export default class Card {
   _handleLikeIcon() {
     this._element
       .querySelector(".card__like-button")
-      .classList.toggle("card__like-button_active");
+      .classList.toggle(".card__like-button_active");
   }
 
   _handleDeleteCard() {
@@ -47,5 +47,7 @@ export default class Card {
     this._element.querySelector(".card__title").textContent = this._name;
 
     this._setEventListeners();
+
+    return this._element;
   }
 }
