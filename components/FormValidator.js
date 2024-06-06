@@ -40,7 +40,8 @@ export default class FormValidator {
 
   _toggleButtonState(inputList) {
     if (this._hasInvalidInput(inputList)) {
-        this._submitButton = this._formElement.querySelector('.modal__save-button');
+        console.log(this._inactiveButtonClass);
+        console.log(this._submitButton);
         this._submitButton.classList.add(this._inactiveButtonClass);
         this._submitButton.disabled = true;
       return;
@@ -75,6 +76,6 @@ export default class FormValidator {
     this._formElement.addEventListener("submit", (e) => {
       e.preventDefault();
     });
-    this._setEventListeners(this._formElement, this._options);
+    this._setEventListeners(formElement, options);
   }
 }

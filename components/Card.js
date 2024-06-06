@@ -35,7 +35,7 @@ export default class Card {
 
     this._element.querySelector(
       ".card__image"
-    ).style.backgroundImage = `url(${this._link})`;
+    ).src = this._link;
     this._element.querySelector(".card__title").textContent = this._name;
 
     this._setEventListeners();
