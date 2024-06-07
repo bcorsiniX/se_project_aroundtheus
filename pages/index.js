@@ -136,10 +136,10 @@ function handleNewPlaceSubmit(e) {
   newPlaceModalForm.reset();
 }
 
-function handleImageClick(cardData) {
-  imageModalImage.src = cardData._link;
-  imageModalImage.alt = cardData._name;
-  imageModalCaption.textContent = cardData._name;
+function handleImageClick(data) {
+  imageModalImage.src = data.link;
+  imageModalImage.alt = data.name;
+  imageModalCaption.textContent = data.name;
   openModal(imageModal);
 }
 
@@ -184,10 +184,8 @@ const options = {
   errorClass: "modal__error_visible",
 };
 
-const editFormElement = profileEditModal.querySelector("#modal-form");
-const addFormElement = newPlaceModal.querySelector("#newPlaceModal-form");
 
-const editFormValidator = new FormValidator(options, editFormElement);
-const addFormValidator = new FormValidator(options, addFormElement);
+const editFormValidator = new FormValidator(options, profileEditForm);
+const addFormValidator = new FormValidator(options, newPlaceModalForm);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
