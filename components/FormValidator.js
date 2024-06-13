@@ -45,7 +45,7 @@ export default class FormValidator {
 
   _toggleButtonState(inputList) {
     if (this._hasInvalidInput(inputList)) {
-          this._disableSubmitButton();
+          disableSubmitButton();
       return;
     }
     this._enableSubmitButton();
@@ -56,7 +56,7 @@ export default class FormValidator {
     this._submitButton.disabled = false;
   }
 
-  _disableSubmitButton() {
+    disableSubmitButton() {
     this._submitButton.classList.add(this._inactiveButtonClass);
     this._submitButton.disabled = true;
   }
@@ -66,6 +66,7 @@ export default class FormValidator {
     this._inputList = [
       ...this._formElement.querySelectorAll(this._inputSelector),
     ];
+    console.log(this._inputList);
     this._submitButton = this._formElement.querySelector(this._submitButtonSelector);
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {

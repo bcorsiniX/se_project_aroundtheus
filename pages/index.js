@@ -31,6 +31,15 @@ const initialCards = [
   },
 ];
 
+const options = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__save-button",
+  inactiveButtonClass: "modal__save-button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
+
 
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profileEditModal");
@@ -172,23 +181,18 @@ closeButtons.forEach((button) => {
 });
 
 newPlaceButton.addEventListener("click", () => {
-  disableSubmitButton();
     openModal(newPlaceModal);
+    console.log(addFormValidator.disableSubmitButton);
 });
+
 
 newPlaceModalForm.addEventListener("submit", handleNewPlaceSubmit);
 
-const options = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__save-button",
-  inactiveButtonClass: "modal__save-button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
+
 
 
 const editFormValidator = new FormValidator(options, profileEditForm);
 const addFormValidator = new FormValidator(options, newPlaceModalForm);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
+console.log(addFormValidator.disableSubmitButton());
