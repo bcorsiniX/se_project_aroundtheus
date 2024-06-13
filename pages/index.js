@@ -171,7 +171,10 @@ closeButtons.forEach((button) => {
   button.addEventListener("click", () => closeModal(modal));
 });
 
-newPlaceButton.addEventListener("click", () => openModal(newPlaceModal));
+newPlaceButton.addEventListener("click", () => {
+  disableSubmitButton();
+    openModal(newPlaceModal);
+});
 
 newPlaceModalForm.addEventListener("submit", handleNewPlaceSubmit);
 

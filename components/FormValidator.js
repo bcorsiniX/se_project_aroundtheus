@@ -20,6 +20,7 @@ export default class FormValidator {
     inputElement.classList.add(this._inputErrorClass);
     this._errorMessageEl.textContent = inputElement.validationMessage;
     this._errorMessageEl.classList.add(this._errorClass);
+    console.log(this._inputErrorClass);
   }
 
   _hideInputError(inputElement) {
@@ -33,9 +34,9 @@ export default class FormValidator {
 
   _checkInputValidity(inputElement) {
     if (!inputElement.validity.valid) {
-      return this._showInputError();
+      return this._showInputError(inputElement);
     }
-    this._hideInputError();
+    this._hideInputError(inputElement);
   }
 
   _hasInvalidInput() {
@@ -44,8 +45,7 @@ export default class FormValidator {
 
   _toggleButtonState(inputList) {
     if (this._hasInvalidInput(inputList)) {
-        this._submitButton.classList.add(this._inactiveButtonClass);
-        this._submitButton.disabled = true;
+          this._disableSubmitButton();
       return;
     }
     this._enableSubmitButton();
@@ -54,6 +54,11 @@ export default class FormValidator {
   _enableSubmitButton() {
     this._submitButton.classList.remove(this._inactiveButtonClass);
     this._submitButton.disabled = false;
+  }
+
+  _disableSubmitButton() {
+    this._submitButton.classList.add(this._inactiveButtonClass);
+    this._submitButton.disabled = true;
   }
 
 
