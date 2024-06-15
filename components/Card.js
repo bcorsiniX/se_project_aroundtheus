@@ -9,11 +9,11 @@ export default class Card {
   _setEventListeners() {
     this._element
       .querySelector(".card__like-button")
-      .addEventListener("click", () =>  this._handleLikeIcon);
+      .addEventListener("click", () =>  this._handleLikeIcon());
 
     this._element
       .querySelector(".card__delete-button")
-      .addEventListener("click", () => this._handleDeleteCard);
+      .addEventListener("click", () => this._handleDeleteCard());
 
     this._element.querySelector(".card__image").addEventListener("click", () => this._handleImageClick(this));
   }

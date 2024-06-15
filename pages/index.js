@@ -116,7 +116,6 @@ function handleNewPlaceSubmit(e) {
 }
 
 function handleImageClick(cardData) {
-  const cardData = { name, link };
   imageModalImage.src = cardData.link;
   imageModalImage.alt = cardData.name;
   imageModalCaption.textContent = cardData.name;
