@@ -115,11 +115,10 @@ function handleNewPlaceSubmit(e) {
   newPlaceModalForm.reset();
 }
 
-function handleImageClick() {
-  const { name, link } = initialCards;
-  imageModalImage.src = link;
-  imageModalImage.alt = name;
-  imageModalCaption.textContent = name;
+function handleImageClick(initialCards) {
+  imageModalImage.src = initialCards.link;
+  imageModalImage.alt = initialCards.name;
+  imageModalCaption.textContent = initialCards.name;
   openModal(imageModal);
 }
 
