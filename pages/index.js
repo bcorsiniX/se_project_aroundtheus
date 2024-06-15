@@ -92,7 +92,7 @@ const closeModalEsc = (event) => {
 
 
 function renderCard(cardData, method = "prepend") {
-  const card = new Card(cardData, cardSelector, handleImageClick, handleLikeIcon, handleDeleteCard).getView();
+  const card = new Card(cardData, cardSelector, handleImageClick).getView();
   cardsListEl[method](card);
 }
 
@@ -115,21 +115,14 @@ function handleNewPlaceSubmit(e) {
   newPlaceModalForm.reset();
 }
 
-function handleImageClick(data) {
-  imageModalImage.src = data.link;
-  imageModalImage.alt = data.name;
-  imageModalCaption.textContent = data.name;
+function handleImageClick() {
+  const { name, link } = initialCards;
+  imageModalImage.src = link;
+  imageModalImage.alt = name;
+  imageModalCaption.textContent = name;
   openModal(imageModal);
 }
 
-
-function handleLikeIcon(card) {
-  card.querySelector('.card__like-button').classList.toggle("card__like-button_active");
-}
-
-function handleDeleteCard(card) {
-  card.remove();
-}
 
 //\/\/\/\/\/\/\/\/\/\/\/\/\___LISTENERS___/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
