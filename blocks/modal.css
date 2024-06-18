@@ -161,7 +161,6 @@ visibility: visible;
 }
 
   .modal__container {
-  padding-top: 25px;
   padding-bottom: 25px;
   max-width: 282px;
   padding-left: 22px;
@@ -176,7 +175,7 @@ visibility: visible;
   right: 0;
   height: 26px;
   width: 26px;
-  padding-bottom: 13px;
+  padding-bottom: 8px;
 }
 
 .modal__container_type_imageModal {
@@ -192,7 +191,7 @@ padding: 0;
   max-width: 282px;
   font-size: 18px;
   height: 22px;
-  line-height: 1.21;
+  line-height: 21.78px;
 }
 
 

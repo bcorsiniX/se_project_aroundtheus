@@ -145,12 +145,13 @@ closeButtons.forEach((button) => {
 
 newPlaceButton.addEventListener("click", () => {
     openModal(newPlaceModal);
-    addFormValidator.disableSubmitButton();
 });
 
 
-newPlaceModalForm.addEventListener("submit", handleNewPlaceSubmit);
-
+newPlaceModalForm.addEventListener("submit", () => {
+  handleNewPlaceSubmit();
+  addFormValidator.disableSubmitButton();
+});
 
 
 
