@@ -162,6 +162,7 @@ visibility: visible;
   .modal__container {
   padding-bottom: 25px;
   max-width: 282px;
+  width: 100%;
   padding-left: 22px;
   padding-right: 22px;
   margin-left: 0;
