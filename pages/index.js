@@ -148,8 +148,8 @@ newPlaceButton.addEventListener("click", () => {
 });
 
 
-newPlaceModalForm.addEventListener("submit", () => {
-  handleNewPlaceSubmit();
+newPlaceModalForm.addEventListener("submit", (e) => {
+  handleNewPlaceSubmit(e);
   addFormValidator.disableSubmitButton();
 });
 
