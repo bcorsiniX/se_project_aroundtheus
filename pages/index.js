@@ -92,7 +92,7 @@ const closeModalEsc = (event) => {
 
 
 function renderCard(cardData, method = "prepend") {
-  const card = new Card(cardData, cardSelector, handleImageClick).getView();
+  const card = new Card(cardData, '#card-template', handleImageClick).getView();
   cardsListEl[method](card);
 }
 
@@ -145,6 +145,7 @@ closeButtons.forEach((button) => {
 
 newPlaceButton.addEventListener("click", () => {
     openModal(newPlaceModal);
+    addFormValidator._toggleButtonState();
 });
 
 
