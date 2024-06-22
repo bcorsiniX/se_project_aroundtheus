@@ -145,7 +145,7 @@ closeButtons.forEach((button) => {
 
 newPlaceButton.addEventListener("click", () => {
     openModal(newPlaceModal);
-    addFormValidator._toggleButtonState();
+    addFormValidator.toggleButtonState();
 });
 
 
