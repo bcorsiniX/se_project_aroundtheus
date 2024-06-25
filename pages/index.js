@@ -2,7 +2,6 @@ import FormValidator from "/components/FormValidator.js";
 import Card from "/components/Card.js";
 
 //\/\/\/\/\/\/\/\/\/\/\/\/\___VARIABLES___/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
-const cardSelector = document.querySelector("#card-template");
 
 const initialCards = [
   {
