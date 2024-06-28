@@ -144,7 +144,10 @@ closeButtons.forEach((button) => {
 
 newPlaceButton.addEventListener("click", () => {
     openModal(newPlaceModal);
-    toggleButtonState();
+    /*const form = document.querySelector('.modal__form');
+    const inputList = document.querySelectorAll('.modal__input');
+    form.toggleButtonState(inputList);*/
+    addFormValidator.toggleButtonState();
 });
 
 
