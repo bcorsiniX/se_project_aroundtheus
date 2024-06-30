@@ -1,5 +1,6 @@
-import FormValidator from "/components/FormValidator.js";
-import Card from "/components/Card.js";
+import FormValidator from "../components/FormValidator";
+import Card from "../components/Card";
+import "../pages/index.css"
 
 //\/\/\/\/\/\/\/\/\/\/\/\/\___VARIABLES___/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
@@ -144,9 +145,6 @@ closeButtons.forEach((button) => {
 
 newPlaceButton.addEventListener("click", () => {
     openModal(newPlaceModal);
-    /*const form = document.querySelector('.modal__form');
-    const inputList = document.querySelectorAll('.modal__input');
-    form.toggleButtonState(inputList);*/
     addFormValidator.toggleButtonState();
 });
 
