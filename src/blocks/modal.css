@@ -53,7 +53,7 @@
 }
 
 .modal__close-button {
-  background: url(../images/Close\ Icon.svg) no-repeat;
+  background: url(../images/Close-Icon.svg) no-repeat;
   position: absolute;
   cursor: pointer;
   width: 40px;

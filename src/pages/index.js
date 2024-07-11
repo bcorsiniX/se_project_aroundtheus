@@ -1,6 +1,7 @@
 import FormValidator from "../components/FormValidator";
 import Card from "../components/Card";
-import "../pages/index.css"
+import "../pages/index.css";
+import Section from "../components/Section";
 
 //\/\/\/\/\/\/\/\/\/\/\/\/\___VARIABLES___/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
@@ -40,7 +41,6 @@ const options = {
   errorClass: "modal__error_visible",
 };
 
-
 const profileEditButton = document.querySelector("#profile-edit-button");
 const profileEditModal = document.querySelector("#profileEditModal");
 const profileName = document.querySelector("#profile-name");
@@ -68,11 +68,11 @@ function closeModal(modal) {
   document.removeEventListener("keydown", closeModalEsc);
 }
 
-function openModal(modal) {
+/*function openModal(modal) {
   modal.classList.add("modal_opened");
   document.addEventListener("click", handleClickOverlay);
   document.addEventListener("keydown", closeModalEsc);
-}
+}*/
 
 const modals = [...document.querySelectorAll(".modal")];
 
@@ -89,12 +89,15 @@ const closeModalEsc = (event) => {
   }
 };
 
-
-
-function renderCard(cardData, method = "prepend") {
-  const card = new Card(cardData, '#card-template', handleImageClick).getView();
-  cardsListEl[method](card);
+function renderCard(cardData) {
+  const card = new Card(cardData, "#card-template", handleImageClick).getView();
+  return card;
 }
+
+const cardSection = new Section(
+  { items: initialCards, renderer: renderCard },
+  "#cards-list"
+);
 
 //\/\/\/\/\/\/\/\/\/\/\/\___HANDLERS___/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
@@ -122,7 +125,6 @@ function handleImageClick(data) {
   openModal(imageModal);
 }
 
-
 //\/\/\/\/\/\/\/\/\/\/\/\/\___LISTENERS___/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
 profileEditButton.addEventListener("click", () => {
@@ -134,9 +136,10 @@ profileEditButton.addEventListener("click", () => {
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 
-initialCards.forEach((cardData) => {
-  renderCard(cardData);
-});
+// initialCards.forEach((cardData) => {
+//   renderCard(cardData);
+// });
+cardSection.renderItems();
 
 closeButtons.forEach((button) => {
   const modal = button.closest(".modal");
@@ -144,17 +147,14 @@ closeButtons.forEach((button) => {
 });
 
 newPlaceButton.addEventListener("click", () => {
-    openModal(newPlaceModal);
-    addFormValidator.toggleButtonState();
+  openModal(newPlaceModal);
+  addFormValidator.toggleButtonState();
 });
-
 
 newPlaceModalForm.addEventListener("submit", (e) => {
   handleNewPlaceSubmit(e);
   addFormValidator.disableSubmitButton();
 });
-
-
 
 const editFormValidator = new FormValidator(options, profileEditForm);
 const addFormValidator = new FormValidator(options, newPlaceModalForm);
