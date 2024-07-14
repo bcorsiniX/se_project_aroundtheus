@@ -62,11 +62,11 @@ const imageModalCaption = imageModal.querySelector("#modalCaption");
 const closeButtons = document.querySelectorAll(".modal__close-button");
 //\/\/\/\/\/\/\/\/\/\/\___FUNCTIONS___/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
-function closeModal(modal) {
+/*function closeModal(modal) {
   modal.classList.remove("modal_opened");
   document.removeEventListener("click", handleClickOverlay);
   document.removeEventListener("keydown", closeModalEsc);
-}
+}*/
 
 /*function openModal(modal) {
   modal.classList.add("modal_opened");
@@ -76,18 +76,18 @@ function closeModal(modal) {
 
 const modals = [...document.querySelectorAll(".modal")];
 
-function handleClickOverlay(e) {
+/*function handleClickOverlay(e) {
   if (Array.from(e.target.classList).includes("modal_opened")) {
     modals.forEach(closeModal);
   }
-}
+}*/
 
-const closeModalEsc = (event) => {
+/*const closeModalEsc = (event) => {
   if (event.key === "Escape") {
     const openedModal = document.querySelector(".modal_opened");
     closeModal(openedModal);
   }
-};
+};*/
 
 function renderCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick).getView();

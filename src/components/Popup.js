@@ -9,9 +9,24 @@ export default class Popup {
     document.addEventListener("keydown", closeModalEsc);
   }
 
-  close() {}
+  close() {
+    this._popupElement.classList.remove("modal_opened");
+    document.removeEventListener("click", handleClickOverlay);
+    document.removeEventListener("keydown", closeModalEsc);
+  }
 
-  _handleEscClose() {}
+  _closeModalEsc(e) {
+    if (e.key === "Escape") {
+      const openedModal = document.querySelector(".modal_opened");
+      closeModal(openedModal);
+    }
+  }
+
+  handleClickOverlay(e) {
+    if (Array.from(e.target.classList).includes("modal_opened")) {
+      modals.forEach(closeModal);
+    }
+  }
 
   setEventListeners() {}
 }
