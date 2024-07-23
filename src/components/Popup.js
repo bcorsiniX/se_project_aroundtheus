@@ -22,11 +22,15 @@ export default class Popup {
     }
   }
 
-  handleClickOverlay(e) {
+  _handleClickOverlay(e) {
     if (Array.from(e.target.classList).includes("modal_opened")) {
       modals.forEach(closeModal);
     }
   }
 
-  setEventListeners() {}
+  setEventListeners() {
+    document
+      .querySelector("modal__close-button")
+      .addEventListener("click", () => this.close);
+  }
 }

@@ -2,6 +2,9 @@ import FormValidator from "../components/FormValidator";
 import Card from "../components/Card";
 import "../pages/index.css";
 import Section from "../components/Section";
+import UserInfo from "../components/UserInfo";
+import PopupWithForm from "../components/PopupWithForm";
+import PopupWithImage from "../components/PopupWithImage";
 
 //\/\/\/\/\/\/\/\/\/\/\/\/\___VARIABLES___/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
@@ -103,8 +106,9 @@ const cardSection = new Section(
 
 function handleProfileEditSubmit(e) {
   e.preventDefault();
-  profileName.textContent = profileNameInput.value;
-  profileDescription.textContent = profileDescriptionInput.value;
+  // profileName.textContent = profileNameInput.value;
+  // profileDescription.textContent = profileDescriptionInput.value;
+  userInfo.setUserInfo();
   closeModal(profileEditModal);
 }
 
@@ -118,19 +122,20 @@ function handleNewPlaceSubmit(e) {
   newPlaceModalForm.reset();
 }
 
-function handleImageClick(data) {
-  imageModalImage.src = data.link;
-  imageModalImage.alt = data.name;
-  imageModalCaption.textContent = data.name;
-  openModal(imageModal);
+function handleImageClick() {
+  // imageModalImage.src = data.link;
+  // imageModalImage.alt = data.name;
+  // imageModalCaption.textContent = data.name;
+  // openModal(imageModal);
+  popupWithImage.open();
 }
 
 //\/\/\/\/\/\/\/\/\/\/\/\/\___LISTENERS___/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
 profileEditButton.addEventListener("click", () => {
-  profileNameInput.value = profileName.textContent;
-  profileDescriptionInput.value = profileDescription.textContent;
-
+  // profileNameInput.value = profileName.textContent;
+  // profileDescriptionInput.value = profileDescription.textContent;
+  userInfo.getUserInfo();
   openModal(profileEditModal);
 });
 
@@ -160,3 +165,11 @@ const editFormValidator = new FormValidator(options, profileEditForm);
 const addFormValidator = new FormValidator(options, newPlaceModalForm);
 editFormValidator.enableValidation();
 addFormValidator.enableValidation();
+
+const userInfo = new UserInfo({
+  nameSelector: "#profile-name-input",
+  descriptionSelector: "#profile-description-input",
+});
+
+const popupWithImage = new PopupWithImage({ popupSelector: "#imageModal" });
+popupWithImage.setEventListeners();
