@@ -65,17 +65,7 @@ const imageModalCaption = imageModal.querySelector("#modalCaption");
 const closeButtons = document.querySelectorAll(".modal__close-button");
 //\/\/\/\/\/\/\/\/\/\/\___FUNCTIONS___/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
-/*function closeModal(modal) {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("click", handleClickOverlay);
-  document.removeEventListener("keydown", closeModalEsc);
-}*/
 
-/*function openModal(modal) {
-  modal.classList.add("modal_opened");
-  document.addEventListener("click", handleClickOverlay);
-  document.addEventListener("keydown", closeModalEsc);
-}*/
 
 const modals = [...document.querySelectorAll(".modal")];
 
@@ -109,7 +99,7 @@ function handleProfileEditSubmit(e) {
   // profileName.textContent = profileNameInput.value;
   // profileDescription.textContent = profileDescriptionInput.value;
   userInfo.setUserInfo();
-  closeModal(profileEditModal);
+  editProfilePopup.close();
 }
 
 function handleNewPlaceSubmit(e) {
@@ -118,15 +108,12 @@ function handleNewPlaceSubmit(e) {
   const link = newPlaceImageURLInput.value;
   const cardData = { name, link };
   renderCard(cardData);
-  closeModal(newPlaceModal);
-  newPlaceModalForm.reset();
+  cardSection.addItem();
+  newCardPopup.close();
+  newCardPopup.reset();
 }
 
 function handleImageClick() {
-  // imageModalImage.src = data.link;
-  // imageModalImage.alt = data.name;
-  // imageModalCaption.textContent = data.name;
-  // openModal(imageModal);
   popupWithImage.open();
 }
 
@@ -136,7 +123,7 @@ profileEditButton.addEventListener("click", () => {
   // profileNameInput.value = profileName.textContent;
   // profileDescriptionInput.value = profileDescription.textContent;
   userInfo.getUserInfo();
-  openModal(profileEditModal);
+  editProfilePopup.open();
 });
 
 profileEditForm.addEventListener("submit", handleProfileEditSubmit);
@@ -152,7 +139,7 @@ closeButtons.forEach((button) => {
 });
 
 newPlaceButton.addEventListener("click", () => {
-  openModal(newPlaceModal);
+  newCardPopup.open();
   addFormValidator.toggleButtonState();
 });
 
@@ -173,3 +160,12 @@ const userInfo = new UserInfo({
 
 const popupWithImage = new PopupWithImage({ popupSelector: "#imageModal" });
 popupWithImage.setEventListeners();
+
+const editProfilePopup = new PopupWithForm({
+  profileEditModal,
+  handleProfileEditSubmit,
+});
+const newCardPopup = new PopupWithForm({ newPlaceModal, handleNewPlaceSubmit });
+
+editProfilePopup.setEventListeners();
+newCardPopup.setEventListeners();
