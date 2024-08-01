@@ -8,7 +8,7 @@ import PopupWithImage from "../components/PopupWithImage";
 
 //\/\/\/\/\/\/\/\/\/\/\/\/\___VARIABLES___/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
-const initialCards = [
+const cardData = [
   {
     name: "Yosemite Valley",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
@@ -65,8 +65,6 @@ const imageModalCaption = imageModal.querySelector("#modalCaption");
 const closeButtons = document.querySelectorAll(".modal__close-button");
 //\/\/\/\/\/\/\/\/\/\/\___FUNCTIONS___/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
-
-
 const modals = [...document.querySelectorAll(".modal")];
 
 /*function handleClickOverlay(e) {
@@ -88,33 +86,36 @@ function renderCard(cardData) {
 }
 
 const cardSection = new Section(
-  { items: initialCards, renderer: renderCard },
+  { items: cardData, renderer: renderCard },
   "#cards-list"
+);
+
+const editProfilePopup = new PopupWithForm(
+  {
+    popupSelector: "#profileEditModal",
+  },
+  handleProfileEditSubmit
 );
 
 //\/\/\/\/\/\/\/\/\/\/\/\___HANDLERS___/\/\/\/\/\/\/\/\/\/\/\/\/\/\
 
-function handleProfileEditSubmit(e) {
-  e.preventDefault();
+function handleProfileEditSubmit() {
   // profileName.textContent = profileNameInput.value;
   // profileDescription.textContent = profileDescriptionInput.value;
   userInfo.setUserInfo();
   editProfilePopup.close();
 }
 
-function handleNewPlaceSubmit(e) {
-  e.preventDefault();
-  const name = newPlaceTitleInput.value;
-  const link = newPlaceImageURLInput.value;
-  const cardData = { name, link };
+function handleNewPlaceSubmit(inputValues) {
+  const cardData = { name: inputValues.name, link: inputValues.link };
   renderCard(cardData);
   cardSection.addItem();
   newCardPopup.close();
   newCardPopup.reset();
 }
 
-function handleImageClick() {
-  popupWithImage.open();
+function handleImageClick(name, link) {
+  popupWithImage.open(name, link);
 }
 
 //\/\/\/\/\/\/\/\/\/\/\/\/\___LISTENERS___/\/\/\/\/\/\/\/\/\/\/\/\/\/\
@@ -133,11 +134,6 @@ profileEditForm.addEventListener("submit", handleProfileEditSubmit);
 // });
 cardSection.renderItems();
 
-closeButtons.forEach((button) => {
-  const modal = button.closest(".modal");
-  button.addEventListener("click", () => closeModal(modal));
-});
-
 newPlaceButton.addEventListener("click", () => {
   newCardPopup.open();
   addFormValidator.toggleButtonState();
@@ -154,18 +150,19 @@ editFormValidator.enableValidation();
 addFormValidator.enableValidation();
 
 const userInfo = new UserInfo({
-  nameSelector: "#profile-name-input",
-  descriptionSelector: "#profile-description-input",
+  nameSelector: "#profile-name",
+  descriptionSelector: "#profile-description",
 });
 
 const popupWithImage = new PopupWithImage({ popupSelector: "#imageModal" });
 popupWithImage.setEventListeners();
 
-const editProfilePopup = new PopupWithForm({
-  profileEditModal,
-  handleProfileEditSubmit,
-});
-const newCardPopup = new PopupWithForm({ newPlaceModal, handleNewPlaceSubmit });
+const newCardPopup = new PopupWithForm(
+  {
+    popupSelector: "#newPlaceModal",
+  },
+  handleNewPlaceSubmit
+);
 
 editProfilePopup.setEventListeners();
 newCardPopup.setEventListeners();
