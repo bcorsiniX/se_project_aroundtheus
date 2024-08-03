@@ -107,9 +107,8 @@ function handleProfileEditSubmit() {
 }
 
 function handleNewPlaceSubmit(inputValues) {
-  const cardData = { name: inputValues.name, link: inputValues.link };
-  renderCard(cardData);
-  cardSection.addItem();
+  const cardData = { name: inputValues.title, link: inputValues.link };
+  cardSection.addItem(renderCard(cardData));
   newCardPopup.close();
   newCardPopup.reset();
 }
@@ -139,10 +138,10 @@ newPlaceButton.addEventListener("click", () => {
   addFormValidator.toggleButtonState();
 });
 
-newPlaceModalForm.addEventListener("submit", (e) => {
+/*newPlaceModalForm.addEventListener("submit", (e) => {
   handleNewPlaceSubmit(e);
   addFormValidator.disableSubmitButton();
-});
+});*/
 
 const editFormValidator = new FormValidator(options, profileEditForm);
 const addFormValidator = new FormValidator(options, newPlaceModalForm);
