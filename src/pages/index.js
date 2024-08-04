@@ -110,7 +110,6 @@ function handleNewPlaceSubmit(inputValues) {
   const cardData = { name: inputValues.title, link: inputValues.link };
   cardSection.addItem(renderCard(cardData));
   newCardPopup.close();
-  newCardPopup.reset();
 }
 
 function handleImageClick(name, link) {
