@@ -82,6 +82,7 @@ const modals = [...document.querySelectorAll(".modal")];
 
 function renderCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick).getView();
+  cardSection.addItem(card);
   return card;
 }
 
@@ -108,7 +109,7 @@ function handleProfileEditSubmit() {
 
 function handleNewPlaceSubmit(inputValues) {
   const cardData = { name: inputValues.title, link: inputValues.link };
-  cardSection.addItem(renderCard(cardData));
+  renderCard(cardData);
   newCardPopup.close();
 }
 
