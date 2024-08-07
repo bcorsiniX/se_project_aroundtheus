@@ -1,3 +1,10 @@
+import FormValidator from "../../components/FormValidator";
+import PopupWithForm from "../../components/PopupWithForm";
+import PopupWithImage from "../../components/PopupWithImage";
+import UserInfo from "../../components/UserInfo";
+import Section from "../../components/Section";
+import "../index.js";
+
 const cardData = [
   {
     name: "Yosemite Valley",
