@@ -7,7 +7,7 @@ export default class FormValidator {
     this._inactiveButtonClass = options.inactiveButtonClass;
     this._inputErrorClass = options.inputErrorClass;
     this._errorClass = options.errorClass;
-    this._inputList = Array.from.querySelectorAll(options.inputSelector);
+    this._inputList = document.querySelectorAll(options.inputSelector);
   }
 
   _showInputError(inputElement) {
@@ -25,6 +25,7 @@ export default class FormValidator {
     );
     inputElement.classList.remove(this._inputErrorClass);
     this._errorMessageEl.classList.remove(this._errorClass);
+    console.log(this._errorMessageEl);
     this._errorMessageEl.textContent = "";
   }
 
@@ -36,9 +37,11 @@ export default class FormValidator {
   }
 
   _hasInvalidInput() {
-    return !this._inputList.every(
-      (inputElement) => inputElement.validity.valid
-    );
+    this._inputList.forEach((input) => {
+      if (!input.validity.valid) {
+        return input;
+      }
+    });
   }
 
   toggleButtonState(inputList) {
@@ -83,14 +86,5 @@ export default class FormValidator {
       e.preventDefault();
     });
     this._setEventListeners();
-  }
-
-  enableValidator(options) {
-    const formValidators = {};
-    const formList = [...document.querySelectorAll(options.formSelector)];
-    formList.forEach((formElement) => {
-      const formName = formElement.getAttribute("name");
-      formValidators[formName] = validator;
-    });
   }
 }

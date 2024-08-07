@@ -37,7 +37,7 @@ export const options = {
 };
 
 export const profileEditButton = document.querySelector("#profile-edit-button");
-export const profileEditForm = document.forms["#modal-form"];
+export const profileEditForm = document.forms["modal-form"];
 export const newPlaceButton = document.querySelector("#newPlaceButton");
-export const newPlaceModalForm = document.forms["#newPlaceModal-form"];
+export const newPlaceModalForm = document.forms["newPlaceModal-form"];
 export const imageModal = document.querySelector("#imageModal");

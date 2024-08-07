@@ -47,11 +47,6 @@ const editProfilePopup = new PopupWithForm(
   handleProfileEditSubmit
 );
 
-const profileValidator = new FormValidator(options, profileEditForm);
-profileValidator.enableValidator();
-const newPlaceValidator = new FormValidator(options, newPlaceModalForm);
-newPlaceValidator.enableValidation();
-
 const editFormValidator = new FormValidator(options, profileEditForm);
 const addFormValidator = new FormValidator(options, newPlaceModalForm);
 const userInfo = new UserInfo({
@@ -72,12 +67,6 @@ cardSection.renderItems();
 editFormValidator.enableValidation();
 
 addFormValidator.enableValidation();
-
-enableValidator(options);
-
-formValidators["profileForm"].resetValidation();
-
-formValidators["newPlaceModalForm"].resetValidation();
 
 popupWithImage.setEventListeners();
 
