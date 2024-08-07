@@ -5,7 +5,14 @@ import Section from "../components/Section";
 import UserInfo from "../components/UserInfo";
 import PopupWithForm from "../components/PopupWithForm";
 import PopupWithImage from "../components/PopupWithImage";
-import "../pages/utils/constants";
+import {
+  cardData,
+  options,
+  profileEditButton,
+  profileEditForm,
+  newPlaceButton,
+  newPlaceModalForm,
+} from "../pages/utils/constants.js";
 
 function renderCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick).getView();
@@ -27,6 +34,38 @@ function handleNewPlaceSubmit(inputValues) {
 function handleImageClick(name, link) {
   popupWithImage.open(name, link);
 }
+
+const cardSection = new Section(
+  { items: cardData, renderer: renderCard },
+  "#cards-list"
+);
+
+const editProfilePopup = new PopupWithForm(
+  {
+    popupSelector: "#profileEditModal",
+  },
+  handleProfileEditSubmit
+);
+
+const profileValidator = new FormValidator(options, profileEditForm);
+profileValidator.enableValidator();
+const newPlaceValidator = new FormValidator(options, newPlaceModalForm);
+newPlaceValidator.enableValidation();
+
+const editFormValidator = new FormValidator(options, profileEditForm);
+const addFormValidator = new FormValidator(options, newPlaceModalForm);
+const userInfo = new UserInfo({
+  nameSelector: "#profile-name",
+  descriptionSelector: "#profile-description",
+});
+
+const popupWithImage = new PopupWithImage({ popupSelector: "#imageModal" });
+const newCardPopup = new PopupWithForm(
+  {
+    popupSelector: "#newPlaceModal",
+  },
+  handleNewPlaceSubmit
+);
 
 cardSection.renderItems();
 

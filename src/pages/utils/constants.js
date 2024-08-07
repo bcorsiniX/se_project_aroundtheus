@@ -1,11 +1,6 @@
-import FormValidator from "../../components/FormValidator";
-import PopupWithForm from "../../components/PopupWithForm";
-import PopupWithImage from "../../components/PopupWithImage";
-import UserInfo from "../../components/UserInfo";
-import Section from "../../components/Section";
 import "../index.js";
 
-const cardData = [
+export const cardData = [
   {
     name: "Yosemite Valley",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/around-project/yosemite.jpg",
@@ -32,7 +27,7 @@ const cardData = [
   },
 ];
 
-const options = {
+export const options = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__save-button",
@@ -41,46 +36,8 @@ const options = {
   errorClass: "modal__error_visible",
 };
 
-const profileEditButton = document.querySelector("#profile-edit-button");
-const profileEditForm = document.forms["#modal-form"];
-const newPlaceButton = document.querySelector("#newPlaceButton");
-const newPlaceModalForm = document.forms["#newPlaceModal-form"];
-const imageModal = document.querySelector("#imageModal");
-
-const cardSection = new Section(
-  { items: cardData, renderer: renderCard },
-  "#cards-list"
-);
-
-const editProfilePopup = new PopupWithForm(
-  {
-    popupSelector: "#profileEditModal",
-  },
-  handleProfileEditSubmit
-);
-
-const editFormValidator = new FormValidator(options, profileEditForm);
-const addFormValidator = new FormValidator(options, newPlaceModalForm);
-const userInfo = new UserInfo({
-  nameSelector: "#profile-name",
-  descriptionSelector: "#profile-description",
-});
-
-const popupWithImage = new PopupWithImage({ popupSelector: "#imageModal" });
-const newCardPopup = new PopupWithForm(
-  {
-    popupSelector: "#newPlaceModal",
-  },
-  handleNewPlaceSubmit
-);
-
-const enableValidator = (options) => {
-  const formValidators = {};
-  const formList = [...document.querySelectorAll(options.formSelector)];
-  formList.forEach((formElement) => {
-    const validator = new FormValidator(options, formElement);
-    const formName = formElement.getAttribute("name");
-    formValidators[formName] = validator;
-    validator.enableValidator();
-  });
-};
+export const profileEditButton = document.querySelector("#profile-edit-button");
+export const profileEditForm = document.forms["#modal-form"];
+export const newPlaceButton = document.querySelector("#newPlaceButton");
+export const newPlaceModalForm = document.forms["#newPlaceModal-form"];
+export const imageModal = document.querySelector("#imageModal");
