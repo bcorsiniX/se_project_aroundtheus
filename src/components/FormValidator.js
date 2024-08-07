@@ -7,12 +7,11 @@ export default class FormValidator {
     this._inactiveButtonClass = options.inactiveButtonClass;
     this._inputErrorClass = options.inputErrorClass;
     this._errorClass = options.errorClass;
+    this._inputList = [
+      ...this._formElement.querySelectorAll(this._inputSelector),
+    ];
   }
 
- 
-
- 
- 
   _showInputError(inputElement) {
     this._errorMessageEl = this._formElement.querySelector(
       `#${inputElement.id}-error`
@@ -39,15 +38,24 @@ export default class FormValidator {
   }
 
   _hasInvalidInput() {
-    return !this._inputList.every((inputElement) => inputElement.validity.valid);
+    return !this._inputList.every(
+      (inputElement) => inputElement.validity.valid
+    );
   }
 
   toggleButtonState(inputList) {
     if (this._hasInvalidInput(inputList)) {
-          this.disableSubmitButton();
+      this.disableSubmitButton();
       return;
     }
     this._enableSubmitButton();
+  }
+
+  resetValidation() {
+    this.toggleButtonState();
+    this._inputList.forEach((inputElement) => {
+      this._hideInputError(inputElement);
+    });
   }
 
   _enableSubmitButton() {
@@ -55,17 +63,15 @@ export default class FormValidator {
     this._submitButton.disabled = false;
   }
 
-    disableSubmitButton() {
+  disableSubmitButton() {
     this._submitButton.classList.add(this._inactiveButtonClass);
     this._submitButton.disabled = true;
   }
 
-
   _setEventListeners() {
-    this._inputList = [
-      ...this._formElement.querySelectorAll(this._inputSelector),
-    ];
-    this._submitButton = this._formElement.querySelector(this._submitButtonSelector);
+    this._submitButton = this._formElement.querySelector(
+      this._submitButtonSelector
+    );
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this._checkInputValidity(inputElement);
@@ -73,9 +79,6 @@ export default class FormValidator {
       });
     });
   }
-
-
-
 
   enableValidation() {
     this._formElement.addEventListener("submit", (e) => {

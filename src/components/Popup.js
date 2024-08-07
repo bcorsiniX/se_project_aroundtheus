@@ -25,14 +25,12 @@ export default class Popup {
   };
 
   _handleClickOverlay = (e) => {
-    if (e.target === this._popupElement || e.target === this._closeButton) {
+    if (e.target === this._popupElement) {
       this.close();
     }
   };
 
   setEventListeners() {
-    document
-      .querySelector(".modal__close-button")
-      .addEventListener("click", () => this.close);
+    this._closeButton.addEventListener("click", () => this.close());
   }
 }
