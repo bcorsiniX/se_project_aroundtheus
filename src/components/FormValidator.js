@@ -7,26 +7,25 @@ export default class FormValidator {
     this._inactiveButtonClass = options.inactiveButtonClass;
     this._inputErrorClass = options.inputErrorClass;
     this._errorClass = options.errorClass;
-    this._inputList = document.querySelectorAll(options.inputSelector);
+    this._inputList = this._formElement.querySelectorAll(options.inputSelector);
   }
 
   _showInputError(inputElement) {
-    this._errorMessageEl = this._formElement.querySelector(
+    let errorMessageEl = this._formElement.querySelector(
       `#${inputElement.id}-error`
     );
     inputElement.classList.add(this._inputErrorClass);
-    this._errorMessageEl.textContent = inputElement.validationMessage;
-    this._errorMessageEl.classList.add(this._errorClass);
+    errorMessageEl.textContent = inputElement.validationMessage;
+    errorMessageEl.classList.add(this._errorClass);
   }
 
   _hideInputError(inputElement) {
-    this._errorMessageEl = this._formElement.querySelector(
+    let errorMessageEl = this._formElement.querySelector(
       `#${inputElement.id}-error`
     );
     inputElement.classList.remove(this._inputErrorClass);
-    this._errorMessageEl.classList.remove(this._errorClass);
-    console.log(this._errorMessageEl);
-    this._errorMessageEl.textContent = "";
+    errorMessageEl.classList.remove(this._errorClass);
+    errorMessageEl.textContent = "";
   }
 
   _checkInputValidity(inputElement) {
