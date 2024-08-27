@@ -20,8 +20,8 @@ function renderCard(cardData) {
   return card;
 }
 
-function handleProfileEditSubmit() {
-  userInfo.setUserInfo();
+function handleProfileEditSubmit(inputValues) {
+  userInfo.setUserInfo(inputValues);
   editProfilePopup.close();
 }
 
