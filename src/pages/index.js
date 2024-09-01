@@ -50,8 +50,8 @@ const editProfilePopup = new PopupWithForm(
 const editFormValidator = new FormValidator(options, profileEditForm);
 const addFormValidator = new FormValidator(options, newPlaceModalForm);
 const userInfo = new UserInfo({
-  nameSelector: "#profile-name",
-  descriptionSelector: "#profile-description",
+  name: "#profile-name",
+  description: "#profile-description",
 });
 
 const popupWithImage = new PopupWithImage({ popupSelector: "#imageModal" });

@@ -9,13 +9,14 @@ export default class UserInfo {
   }
 
   getUserInfo() {
-    
-      this._nameInput.value = this._nameElement.textContent,
-      this._descriptionInput.value = this._descriptionElement.textContent,
-    }
+    return {
+      name: this._nameElement.textContent,
+      description: this._descriptionElement.textContent,
+    };
+  }
 
-  setUserInfo() {
-    this._nameElement.textContent = this._nameInput.value;
-    this._descriptionElement.textContent = this._descriptionInput.value;
+  setUserInfo(userData) {
+    this._nameElement.textContent = userData.name;
+    this._descriptionElement.textContent = userData.description;
   }
 }
