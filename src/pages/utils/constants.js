@@ -41,3 +41,7 @@ export const profileEditForm = document.forms["modal-form"];
 export const newPlaceButton = document.querySelector("#newPlaceButton");
 export const newPlaceModalForm = document.forms["newPlaceModal-form"];
 export const imageModal = document.querySelector("#imageModal");
+export const profileNameInput = document.querySelector("#profile-name-input");
+export const profileDescriptionInput = document.querySelector(
+  "#profile-description-input"
+);

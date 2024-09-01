@@ -12,6 +12,8 @@ import {
   profileEditForm,
   newPlaceButton,
   newPlaceModalForm,
+  profileNameInput,
+  profileDescriptionInput,
 } from "../pages/utils/constants.js";
 
 function renderCard(cardData) {
@@ -80,6 +82,8 @@ newPlaceButton.addEventListener("click", () => {
 });
 
 profileEditButton.addEventListener("click", () => {
-  userInfo.getUserInfo();
+  const userData = userInfo.getUserInfo();
+  profileNameInput.value = userData.name;
+  profileDescriptionInput.value = userData.description;
   editProfilePopup.open();
 });
