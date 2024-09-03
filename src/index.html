@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, intial-scale-1.0" />
+    <meta name="description" content="around the US" />
+    <meta name="keywords" content="travel, explore, places in the US" />
+    <meta name="author" content="Briana C. Orsini" />
+    <link rel="icon" href="./favicon.ico" />
+    <title>Around the US</title>
+  </head>
+  <body class="page">
+    <div class="page__content">
+      <header class="header page__section">
+        <img
+          class="header__logo"
+          src="<%=require('./images/Logo.svg')%>"
+          alt="around the US logo"
+        />
+      </header>
+      <main class="content">
+        <div class="content__overlay">
+          <section class="page__section profile">
+            <img
+              src="<%=require('./images/Avatar.png')%>"
+              alt="picture of Jacques Cousteau"
+              class="profile__image"
+            />
+            <div class="profile__info">
+              <h1 id="profile-name" class="profile__title">Jacques Cousteau</h1>
+              <button
+                type="button"
+                aria-label="edit profile"
+                class="profile__edit-button"
+                id="profile-edit-button"
+              ></button>
+              <p id="profile-description" class="profile__description">
+                Explorer
+              </p>
+            </div>
+            <button
+              type="button"
+              aria-label="add profile"
+              class="profile__add-button modal__button"
+              id="newPlaceButton"
+            ></button>
+          </section>
+
+          <section class="cards page__section">
+            <ul id="cards-list" class="cards__list"></ul>
+          </section>
+        </div>
+      </main>
+    </div>
+    <footer class="footer">
+      <p class="footer__text">&copy; 2022 Around The U.S.</p>
+    </footer>
+    <div class="modal" id="imageModal">
+      <div class="modal__container modal__container_type_imageModal">
+        <button
+          class="modal__close-button modal__close-button_type_imageModal"
+          type="button"
+          type="close"
+          aria-label="close"
+          id="imageModal-closeButton"
+        ></button>
+        <img src="" alt="" class="modal__image" id="modalImage" />
+        <p class="modal__caption" id="modalCaption"></p>
+      </div>
+    </div>
+    <div class="modal" id="profileEditModal">
+      <div class="modal__container" id="edit-profile-modal">
+        <button
+          aria-label="close"
+          title="close"
+          type="button"
+          class="modal__close-button modal__button"
+          id="profileEditClose-Button"
+        ></button>
+        <p class="modal__heading">Edit Profile</p>
+        <form name="profileForm" id="modal-form" class="modal__form">
+          <label for="profile-name-input" class="modal__label">
+            <input
+              id="profile-name-input"
+              placeholder="User Name"
+              class="modal__input"
+              type="text"
+              name="title"
+              required
+              minlength="2"
+              maxlength="40"
+            />
+            <span
+              class="modal__error modal__error_visible"
+              id="profile-name-input-error"
+            ></span>
+          </label>
+          <label for="profile-description-input" class="modal__label">
+            <input
+              id="profile-description-input"
+              placeholder="Description"
+              class="modal__input"
+              type="text"
+              name="description"
+              required
+              minlength="2"
+              maxlength="200"
+            />
+            <span
+              class="modal__error modal__error_visible"
+              id="profile-description-input-error"
+            ></span>
+          </label>
+          <button
+            title="save"
+            type="submit"
+            aria-label="submit"
+            class="modal__save-button"
+          >
+            Save
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal" id="newPlaceModal">
+      <div class="modal__container">
+        <button
+          title="close"
+          type="button"
+          class="modal__close-button"
+          id="newPlaceClose-Button"
+          aria-label="close"
+        ></button>
+        <p class="modal__heading">New Place</p>
+        <form
+          name="newPlaceModalForm"
+          id="newPlaceModal-form"
+          class="modal__form"
+        >
+          <label for="newPlaceTitle-input" class="modal__label">
+            <input
+              id="newPlaceTitle-input"
+              placeholder="Title"
+              class="modal__input"
+              type="text"
+              name="title"
+              minlength="1"
+              maxlength="30"
+              required
+            />
+            <span
+              id="newPlaceTitle-input-error"
+              class="modal__error modal__error_type_title modal__error_visible"
+            ></span>
+          </label>
+          <label for="newPlaceImageURL-input" class="modal__label">
+            <input
+              id="newPlaceImageURL-input"
+              placeholder="Image URL"
+              class="modal__input"
+              type="url"
+              name="link"
+              required
+            />
+            <span
+              id="newPlaceImageURL-input-error"
+              class="modal__error modal__error_type_url modal__error_visible"
+            ></span>
+          </label>
+          <button title="Create" type="submit" class="modal__save-button">
+            Create
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <template id="card-template"
+      ><li class="card">
+        <img src="" alt="" class="card__image" id="card-image" />
+        <div class="card__description">
+          <h2 class="card__title" id="card-title"></h2>
+          <button
+            class="card__delete-button"
+            type="button"
+            aria-label="delete"
+            id="card-deleteButton"
+          ></button>
+          <button
+            type="button"
+            aria-label="like"
+            class="card__like-button"
+            id="card-likeButton"
+          ></button>
+        </div></li
+    ></template>
+  </body>
+</html>
