@@ -15,6 +15,18 @@ import {
   profileNameInput,
   profileDescriptionInput,
 } from "../pages/utils/constants.js";
+import Api from "../components/Api.js";
+
+fetch("https://jsonplaceholder.typicode.com/todos/1")
+  .then((response) => response.json())
+  .then((json) => console.log(json));
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  authToken: "00206656-b2a6-4caa-be64-3fba7b3497b8",
+});
+
+api.getInitialCards().then((res) => console.log(res));
 
 function renderCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick).getView();

@@ -1,23 +1,30 @@
 export default class Api {
   constructor(options) {
-    //add options
+    this._baseUrl = baseUrl;
+    this._authToken = authToken;
   }
 
-  loadPage() {}
-
-  loadUserInfo() {
-    fetch("https://around-api.en.tripleten-services.com/v1/users/me", {
+  getInitialCards() {
+    return fetch(`${this._baseUrl}/cards`, {
       headers: {
-        authorization: "61322752-a713-4792-a562-1df58527e066",
+        authorization: this._authToken,
       },
     })
       .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
+        res.ok ? res.json : Promise.reject(`Error: ${res.status}`);
       })
-      .then((res) => console.log(res));
+      .catch((err) => console.error(`OOPS! TRY AGAIN ${err}`));
   }
 
-  getInitialCards() {}
+  getUserInfo() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      headers: {
+        authorization: this._authToken,
+      },
+    })
+      .then((res) => {
+        res.ok ? res.json : Promise.reject(`Error: ${res.status}`);
+      })
+      .catch((err) => console.error(`OOPS! TRY AGAIN ${err}`));
+  }
 }
