@@ -1,7 +1,7 @@
 export default class Api {
   constructor(options) {
-    this._baseUrl = baseUrl;
-    this._authToken = authToken;
+    this._baseUrl = "https://around-api.en.tripleten-services.com/v1";
+    this._authToken = "00206656-b2a6-4caa-be64-3fba7b3497b8";
   }
 
   getInitialCards() {

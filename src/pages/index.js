@@ -17,23 +17,29 @@ import {
 } from "../pages/utils/constants.js";
 import Api from "../components/Api.js";
 
-fetch("https://around-api.en.tripleten-services.com/v1/cards", {
-  headers: {
-    authorization: "00206656-b2a6-4caa-be64-3fba7b3497b8",
-  },
-})
-  .then((res) => {
-    res.ok ? res.json() : Promise.reject;
-  })
-  .then((res) => console.log(res))
-  .catch((err) => console.error(`YOU DID IT WRONG: ${err.status}`));
+// fetch("https://around-api.en.tripleten-services.com/v1/cards", {
+//   headers: {
+//     authorization: "00206656-b2a6-4caa-be64-3fba7b3497b8",
+//   },
+// })
+//   .then((res) => {
+//     res.ok ? res.json() : Promise.reject;
+//   })
+//   .then((res) => console.log(res))
+//   .catch((err) => console.error(`YOU DID IT WRONG: ${err.status}`));
 
-// const api = new Api({
-//   baseUrl: "https://around-api.en.tripleten-services.com/v1",
-//   authToken: "00206656-b2a6-4caa-be64-3fba7b3497b8",
-// });
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  authToken: "00206656-b2a6-4caa-be64-3fba7b3497b8",
+});
 
-//api.getInitialCards().then((res) => console.log(res));
+api.getInitialCards().then((cardData) => {
+  const cardSection = new Section(
+    { items: cardData, renderer: renderCard },
+    "#cards-list"
+  );
+  cardSection.renderItems();
+});
 
 function renderCard(cardData) {
   const card = new Card(cardData, "#card-template", handleImageClick).getView();
@@ -56,11 +62,6 @@ function handleImageClick(name, link) {
   popupWithImage.open(name, link);
 }
 
-const cardSection = new Section(
-  { items: cardData, renderer: renderCard },
-  "#cards-list"
-);
-
 const editProfilePopup = new PopupWithForm(
   {
     popupSelector: "#profileEditModal",
@@ -82,8 +83,6 @@ const newCardPopup = new PopupWithForm(
   },
   handleNewPlaceSubmit
 );
-
-cardSection.renderItems();
 
 editFormValidator.enableValidation();
 
