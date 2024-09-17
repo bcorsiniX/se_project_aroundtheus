@@ -39,13 +39,17 @@ api.getInitialCards().then((cardData) => {
     "#cards-list"
   );
   cardSection.renderItems();
-});
 
-function renderCard(cardData) {
-  const card = new Card(cardData, "#card-template", handleImageClick).getView();
-  cardSection.addItem(card);
-  return card;
-}
+  function renderCard(cardData) {
+    const card = new Card(
+      cardData,
+      "#card-template",
+      handleImageClick
+    ).getView();
+    cardSection.addItem(card);
+    return card;
+  }
+});
 
 function handleProfileEditSubmit(inputValues) {
   userInfo.setUserInfo(inputValues);

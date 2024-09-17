@@ -11,7 +11,7 @@ export default class Api {
       },
     })
       .then((res) => {
-        return res.ok ? res.json : Promise.reject(`Error: ${res.status}`);
+        return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
       })
       .catch((err) => console.error(`OOPS! TRY AGAIN ${err}`));
   }
@@ -23,7 +23,7 @@ export default class Api {
       },
     })
       .then((res) => {
-        return res.ok ? res.json : Promise.reject(`Error: ${res.status}`);
+        return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
       })
       .catch((err) => console.error(`OOPS! TRY AGAIN ${err}`));
   }
