@@ -16,6 +16,23 @@ export default class Api {
       .catch((err) => console.error(`OOPS! TRY AGAIN ${err}`));
   }
 
+  addCard({ name, link }) {
+    return fetch(`${this._baseUrl}/cards`, {
+      method: "POST",
+      headers: {
+        authorization: this._authToken,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name,
+        link,
+      }),
+    })
+      .then((res) => {
+        return res.ok ? res.json : Promise.reject(`Error: ${res.status}`);
+      })
+      .catch((err) => console.error(`OOPS! try again ${err}`));
+  }
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: {
@@ -25,6 +42,24 @@ export default class Api {
       .then((res) => {
         return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
       })
-      .catch((err) => console.error(`OOPS! TRY AGAIN ${err}`));
+      .catch((err) => console.error(`OOPS! try again ${err}`));
+  }
+
+  setUserInfo() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: {
+        authorization: this._authToken,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: "Marie Curie",
+        description: "Scientist",
+      }),
+    })
+      .then((res) => {
+        return res.ok ? res.json : Promise.reject(`ERROR: ${res.status}`);
+      })
+      .catch((err) => console.error(`OOPS! try again ${err}`));
   }
 }

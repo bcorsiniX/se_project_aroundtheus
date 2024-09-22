@@ -51,6 +51,9 @@ api.getInitialCards().then((cardData) => {
   }
 });
 
+api.getUserInfo().then();
+api.setUserInfo().then((res) => console.log(res));
+
 function handleProfileEditSubmit(inputValues) {
   userInfo.setUserInfo(inputValues);
   editProfilePopup.close();
