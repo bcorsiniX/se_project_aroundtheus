@@ -62,4 +62,6 @@ export default class Api {
       })
       .catch((err) => console.error(`OOPS! try again ${err}`));
   }
+
+  deleteCard() {}
 }

@@ -46,13 +46,13 @@ api.getInitialCards().then((cardData) => {
       "#card-template",
       handleImageClick
     ).getView();
+    api.addCard(cardData).then((res) => console.log(res));
+
     cardSection.addItem(card);
     return card;
   }
 });
-
 api.getUserInfo().then();
-api.setUserInfo().then((res) => console.log(res));
 
 function handleProfileEditSubmit(inputValues) {
   userInfo.setUserInfo(inputValues);
