@@ -33,6 +33,21 @@ export default class Api {
       })
       .catch((err) => console.error(`OOPS! try again ${err}`));
   }
+
+  deleteCard() {
+    return fetch(`${this._baseUrl}/cards/${_id},`, {
+      method: "DELETE",
+      headers: {
+        authorization: this._authToken,
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) =>
+        res.ok ? res.json : Promise.reject(`Error: ${res.status}`)
+      )
+      .catch((err) => console.error(`OOPS! try again: ${err}`));
+  }
+
   getUserInfo() {
     return fetch(`${this._baseUrl}/users/me`, {
       headers: {
@@ -62,6 +77,4 @@ export default class Api {
       })
       .catch((err) => console.error(`OOPS! try again ${err}`));
   }
-
-  deleteCard() {}
 }
