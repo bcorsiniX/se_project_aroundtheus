@@ -39,32 +39,22 @@ api.getInitialCards().then((cardData) => {
     "#cards-list"
   );
   cardSection.renderItems();
-
-  function renderCard(cardData) {
-    const card = new Card(
-      cardData,
-      "#card-template",
-      handleImageClick
-    ).getView();
-
-    cardSection.addItem(card);
-    return card;
-  }
-
-  const newCardPopup = new PopupWithForm(
-    {
-      popupSelector: "#newPlaceModal",
-    },
-    handleNewPlaceSubmit: (inputValues) => {
-      api.addCard(cardData).then((cardData) => {
-        const cardData = { name: inputValues.title, link: inputValues.link };
-        renderCard(cardData);
-        newCardPopup.close();
-      });
-    }
-  );
 });
 api.getUserInfo().then();
+
+function renderCard(cardData) {
+  const card = new Card(cardData, "#card-template", handleImageClick).getView();
+
+  cardSection.addItem(card);
+  return card;
+}
+
+function handleNewPlaceSubmit(inputValues) {
+  const cardData = { name: inputValues.title, link: inputValues.link };
+  renderCard(cardData);
+  api.addCard(cardData).then(cardData);
+  newCardPopup.close();
+}
 
 function handleProfileEditSubmit(inputValues) {
   userInfo.setUserInfo(inputValues);
@@ -90,6 +80,13 @@ const editProfilePopup = new PopupWithForm(
   handleProfileEditSubmit
 );
 
+const newCardPopup = new PopupWithForm(
+  {
+    popupSelector: "#newPlaceModal",
+  },
+  handleNewPlaceSubmit
+);
+
 const editFormValidator = new FormValidator(options, profileEditForm);
 const addFormValidator = new FormValidator(options, newPlaceModalForm);
 const userInfo = new UserInfo({
@@ -98,7 +95,6 @@ const userInfo = new UserInfo({
 });
 
 const popupWithImage = new PopupWithImage({ popupSelector: "#imageModal" });
-
 
 editFormValidator.enableValidation();
 
