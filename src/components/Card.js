@@ -1,9 +1,12 @@
+import Api from "./Api";
 export default class Card {
-  constructor(cardData, cardSelector, handleImageClick) {
+  constructor(cardData, cardSelector, handleImageClick, handleDeleteCardClick) {
     this.name = cardData.name;
     this.link = cardData.link;
+    this._id = cardData.id;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
+    this._handleDeleteCardClick = handleDeleteCardClick;
   }
 
   _setEventListeners() {
@@ -28,9 +31,13 @@ export default class Card {
       .classList.toggle("card__like-button_active");
   }
 
-  _handleDeleteCard() {
-    this._element.remove();
+  getId() {
+    return this._id;
   }
+
+  // _handleDeleteCard() {
+  //   this._element.remove();
+  // }
 
   _getTemplate() {
     return document

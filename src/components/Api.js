@@ -34,8 +34,8 @@ export default class Api {
       .catch((err) => console.error(`OOPS! try again ${err}`));
   }
 
-  deleteCard() {
-    return fetch(`${this._baseUrl}/cards/${_id},`, {
+  deleteCard(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId},`, {
       method: "DELETE",
       headers: {
         authorization: this._authToken,

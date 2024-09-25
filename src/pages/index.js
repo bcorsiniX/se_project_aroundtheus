@@ -33,20 +33,29 @@ const api = new Api({
   authToken: "00206656-b2a6-4caa-be64-3fba7b3497b8",
 });
 
+const cardSection = new Section(
+  { items: cardData, renderer: renderCard },
+  "#cards-list"
+);
+
 api.getInitialCards().then((cardData) => {
-  const cardSection = new Section(
-    { items: cardData, renderer: renderCard },
-    "#cards-list"
-  );
   cardSection.renderItems();
 });
 api.getUserInfo().then();
 
 function renderCard(cardData) {
-  const card = new Card(cardData, "#card-template", handleImageClick).getView();
-
+  const card = new Card(
+    cardData,
+    "card-template",
+    handleImageClick,
+    handleDeleteCardClick
+  ).getView();
   cardSection.addItem(card);
   return card;
+}
+
+function handleDeleteCardClick() {
+  api.deleteCard(card.getId);
 }
 
 function handleNewPlaceSubmit(inputValues) {
