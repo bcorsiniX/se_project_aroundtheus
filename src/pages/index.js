@@ -38,15 +38,15 @@ const cardSection = new Section(
   "#cards-list"
 );
 
-api.getInitialCards().then((cardData) => {
-  cardSection.renderItems();
+api.getInitialCards().then((res) => {
+  cardSection.renderItems(res);
 });
 api.getUserInfo().then();
 
 function renderCard(cardData) {
   const card = new Card(
     cardData,
-    "card-template",
+    "#card-template",
     handleImageClick,
     handleDeleteCardClick
   ).getView();
