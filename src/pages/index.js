@@ -54,7 +54,7 @@ function renderCard(cardData) {
   return card;
 }
 
-function handleDeleteCardClick() {
+function handleDeleteCardClick(card) {
   api.deleteCard(card.getId);
 }
 
