@@ -6,7 +6,7 @@ import UserInfo from "../components/UserInfo";
 import PopupWithForm from "../components/PopupWithForm";
 import PopupWithImage from "../components/PopupWithImage";
 import {
-  cardData,
+  initialCards,
   options,
   profileEditButton,
   profileEditForm,
@@ -17,31 +17,10 @@ import {
 } from "../pages/utils/constants.js";
 import Api from "../components/Api.js";
 
-// fetch("https://around-api.en.tripleten-services.com/v1/cards", {
-//   headers: {
-//     authorization: "00206656-b2a6-4caa-be64-3fba7b3497b8",
-//   },
-// })
-//   .then((res) => {
-//     res.ok ? res.json() : Promise.reject;
-//   })
-//   .then((res) => console.log(res))
-//   .catch((err) => console.error(`YOU DID IT WRONG: ${err.status}`));
-
 const api = new Api({
   baseUrl: "https://around-api.en.tripleten-services.com/v1",
-  authToken: "00206656-b2a6-4caa-be64-3fba7b3497b8",
+  authToken: "b9cb702e-163c-48e3-b3a3-87283a0a78b9",
 });
-
-const cardSection = new Section(
-  { items: cardData, renderer: renderCard },
-  "#cards-list"
-);
-
-api.getInitialCards().then((res) => {
-  cardSection.renderItems(res);
-});
-api.getUserInfo().then();
 
 function renderCard(cardData) {
   const card = new Card(
@@ -53,6 +32,26 @@ function renderCard(cardData) {
   cardSection.addItem(card);
   return card;
 }
+
+let cardSection;
+
+//getting cards from the server
+api.getInitialCards().then((cards) => {
+  cardSection = new Section(
+    { items: cards, renderer: renderCard },
+    "#cards-list"
+  );
+  //placing the cards on the DOM
+  cardSection.renderItems(cards);
+});
+
+//const nameEl = document.querySelector("#profile-name");
+
+//getting the userinfo from the server
+api.getUserInfo().then((info) => {
+  //setting the user info on the DOM
+  userInfo.setUserInfo({ title: info.name, description: info.about });
+});
 
 function handleDeleteCardClick(card) {
   api.deleteCard(card.getId());

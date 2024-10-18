@@ -1,7 +1,7 @@
 export default class Api {
-  constructor(options) {
-    this._baseUrl = "https://around-api.en.tripleten-services.com/v1";
-    this._authToken = "00206656-b2a6-4caa-be64-3fba7b3497b8";
+  constructor({ baseUrl, authToken }) {
+    this._baseUrl = baseUrl;
+    this._authToken = authToken;
   }
 
   getInitialCards() {
@@ -88,7 +88,7 @@ export default class Api {
       .catch((err) => console.error(`OOPS! try again ${err}`));
   }
 
-  setUserInfo({ name, about }) {
+  editUserInfo({ name, about }) {
     return fetch(`${this._baseUrl}/users/me`, {
       method: "PATCH",
       headers: {

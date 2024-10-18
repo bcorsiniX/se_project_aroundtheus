@@ -24,7 +24,7 @@
 }
 
 .modal__update-avatar {
-  visibility: visible;
+  /* visibility: visible; */
   max-width: 430px;
   max-height: 272px;
 }
