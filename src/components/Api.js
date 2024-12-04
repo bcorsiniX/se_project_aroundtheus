@@ -29,7 +29,7 @@ export default class Api {
       }),
     })
       .then((res) => {
-        return res.ok ? res.json : Promise.reject(`Error: ${res.status}`);
+        return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
       })
       .catch((err) => console.error(`OOPS! try again ${err}`));
   }
@@ -43,7 +43,7 @@ export default class Api {
       },
     })
       .then((res) =>
-        res.ok ? res.json : Promise.reject(`Error: ${res.status}`)
+        res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
       )
       .catch((err) => console.error(`OOPS! try again: ${err}`));
   }
@@ -57,7 +57,7 @@ export default class Api {
       },
     })
       .then((res) => {
-        return res.ok ? res.json : Promise.reject(`Error: ${res.status}`);
+        return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
       })
       .catch((err) => console.error(`OOPS! try again: ${err}`));
   }
@@ -71,7 +71,7 @@ export default class Api {
       },
     })
       .then((res) => {
-        return res.ok ? res.json : Promise.reject(`Error: ${res.status}`);
+        return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
       })
       .catch((err) => console.error(`OOPS! try again: ${err}`));
   }
@@ -101,7 +101,7 @@ export default class Api {
       }),
     })
       .then((res) => {
-        return res.ok ? res.json : Promise.reject(`ERROR: ${res.status}`);
+        return res.ok ? res.json() : Promise.reject(`ERROR: ${res.status}`);
       })
       .catch((err) => console.error(`OOPS! try again ${err}`));
   }
@@ -117,7 +117,7 @@ export default class Api {
       }),
     })
       .then((res) => {
-        return res.ok ? res.json : Promise.reject(`ERROR: ${res.status}`);
+        return res.ok ? res.json() : Promise.reject(`ERROR: ${res.status}`);
       })
       .catch((err) => console.error(`OOPS! try again ${err}`));
   }

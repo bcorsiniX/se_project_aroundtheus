@@ -21,11 +21,23 @@
       <main class="content">
         <div class="content__overlay">
           <section class="page__section profile">
-            <img
-              src="<%=require('./images/Avatar.png')%>"
-              alt="picture of Jacques Cousteau"
-              class="profile__image"
-            />
+            <div class="profile__image-wrapper">
+              <img
+                src="<%=require('./images/Avatar.png')%>"
+                alt="profile picture"
+                class="profile__image"
+              />
+              <img
+                src="<%=require('./images/avatarHoverRect.svg')%>"
+                alt="click to edit profile pic"
+                class="profile__hover"
+              />
+              <img
+                src="<%=require('./images/editAvatarPen.svg')%>"
+                alt="edit profile photo pen"
+                class="profile__edit-pen"
+              />
+            </div>
             <div class="profile__info">
               <h1 id="profile-name" class="profile__title">Jacques Cousteau</h1>
               <button

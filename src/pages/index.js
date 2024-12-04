@@ -54,19 +54,28 @@ api.getUserInfo().then((info) => {
 });
 
 function handleDeleteCardClick(card) {
-  api.deleteCard(card.getId());
+  api.deleteCard(card.getId(card));
 }
 
 function handleNewPlaceSubmit(inputValues) {
   const cardData = { name: inputValues.title, link: inputValues.link };
-  renderCard(cardData);
-  api.addCard(cardData).then(cardData);
-  newCardPopup.close();
+  api
+    .addCard(cardData)
+    .then((newCard) => {
+      renderCard(newCard);
+      newCardPopup.close();
+    })
+    .catch((error) => console.error(error));
 }
 
 function handleProfileEditSubmit(inputValues) {
-  userInfo.setUserInfo(inputValues);
-  editProfilePopup.close();
+  api
+    .editUserInfo({ name: inputValues.title, about: inputValues.description })
+    .then((userData) => {
+      userInfo.setUserInfo(inputValues);
+      editProfilePopup.close();
+    })
+    .catch((err) => console.error(err));
 }
 
 // function handleNewPlaceSubmit(inputValues) {

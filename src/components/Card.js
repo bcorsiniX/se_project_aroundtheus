@@ -31,7 +31,7 @@ export default class Card {
       .classList.toggle("card__like-button_active");
   }
 
-  getId() {
+  getId(card) {
     return this._id;
   }
 
