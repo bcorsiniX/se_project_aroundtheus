@@ -21,26 +21,24 @@
   margin-bottom: 30px;
 }
 
-.profile__hover {
+.profile__image_hover_darken {
   position: absolute;
+  visibility: hidden;
   left: 0;
   background-color: #000000;
   opacity: 80%;
 }
 
-.profile__edit-pen {
+.profile__image_hover_pen {
   position: absolute;
+
   left: 45px;
   top: 85px;
 }
 
-.profile__image:hover {
-  width: 120px;
-  height: 120px;
-  /* background-image: url(../images/avatarHoverRect.svg);
-  background-image: url(../images/editAvatarPen.svg); */
-  color: #ffffff;
+.profile__image:hover .profile__image_hover_darken .profile__image_hover_pen {
   cursor: pointer;
+  visibility: visible;
 }
 
 .profile__info {
