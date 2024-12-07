@@ -27,16 +27,11 @@
                 alt="profile picture"
                 class="profile__image"
               />
-              <img
-                src="<%=require('./images/avatarHoverRect.svg')%>"
-                alt="click to edit profile pic"
-                class="profile__image_hover_darken"
-              />
-              <img
-                src="<%=require('./images/editAvatarPen.svg')%>"
-                alt="edit profile photo pen"
-                class="profile__image_hover_pen"
-              />
+              <button
+                class="edit-profile-image-button"
+                type="button"
+                aria-label="edit profile pic"
+              ></button>
             </div>
             <div class="profile__info">
               <h1 id="profile-name" class="profile__title">Jacques Cousteau</h1>
@@ -229,7 +224,7 @@
         ></button>
       </form>
     </div>
-    <div class="modal modal__update-avatar">
+    <div class="modal modal_update-avatar">
       <form action="" name="update-avatar" class="modal__form">
         <h2 class="modal__heading">Change profile picture</h2>
         <label for="avatar" class="modal__label">

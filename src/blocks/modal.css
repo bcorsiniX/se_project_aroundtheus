@@ -8,8 +8,8 @@
   padding: 0 19px;
   display: flex;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.5);
-  opacity: 0;
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  /* opacity: 0; */
   visibility: hidden;
   transition: visibility 0.5s, opacity 0.5s linear;
 }
@@ -23,10 +23,16 @@
   margin-left: 480px;
 }
 
-.modal__update-avatar {
-  /* visibility: visible; */
+.modal_update-avatar {
   max-width: 430px;
   max-height: 272px;
+  background-color: #ef0f0f;
+  border-radius: 10px;
+  margin-left: 224px;
+  margin-right: 224px;
+  margin-top: 425px;
+  margin-bottom: 425px;
+  visibility: visible;
 }
 
 .modal__heading_confirmation {

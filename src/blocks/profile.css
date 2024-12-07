@@ -7,13 +7,12 @@
 }
 
 .profile__image-wrapper {
-  display: inline-block;
+  position: relative;
 }
 
 .profile__image {
   width: 120px;
   height: 120px;
-  position: relative;
   object-fit: cover;
   border-radius: 50%;
   background-position: center;
@@ -21,24 +20,24 @@
   margin-bottom: 30px;
 }
 
-.profile__image_hover_darken {
+.edit-profile-image-button {
   position: absolute;
-  visibility: hidden;
-  left: 0;
+  height: 100%;
+  width: 100%;
+  left: -10px;
+  top: -16px;
+  opacity: 0;
+  border: none;
   background-color: #000000;
+  background-image: url(../images/editAvatarPen.svg);
+  background-size: 26px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.edit-profile-image-button:hover {
   opacity: 80%;
-}
-
-.profile__image_hover_pen {
-  position: absolute;
-
-  left: 45px;
-  top: 85px;
-}
-
-.profile__image:hover .profile__image_hover_darken .profile__image_hover_pen {
   cursor: pointer;
-  visibility: visible;
 }
 
 .profile__info {
@@ -122,6 +121,11 @@
     margin-right: 0;
     margin-left: 0;
     position: none;
+  }
+
+  .edit-profile-image-button {
+    left: 0;
+    background-size: 24px;
   }
 
   .profile__info {
