@@ -14,24 +14,7 @@
   transition: visibility 0.5s, opacity 0.5s linear;
 }
 
-.modal_confirmation {
-  max-width: 430px;
-  max-height: 181px;
-  border-radius: 10px;
-  background-color: #ffffff;
-  margin-top: 270px;
-  margin-left: 480px;
-}
-
-.modal_update-avatar {
-  max-width: 430px;
-  max-height: 272px;
-  background-color: #ef0f0f;
-  border-radius: 10px;
-  margin-left: 224px;
-  margin-right: 224px;
-  margin-top: 425px;
-  margin-bottom: 425px;
+#update-avatar-modal {
   visibility: visible;
 }
 

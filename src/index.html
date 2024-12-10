@@ -26,9 +26,11 @@
                 src="<%=require('./images/Avatar.png')%>"
                 alt="profile picture"
                 class="profile__image"
+                id="profileImage"
               />
               <button
-                class="edit-profile-image-button"
+                class="profile__updateAvatar-button"
+                id="updateAvatarButton"
                 type="button"
                 aria-label="edit profile pic"
               ></button>
@@ -201,51 +203,61 @@
           ></button>
         </div></li
     ></template>
-    <div class="modal modal_confirmation">
-      <form
-        name="confirmation-form"
-        class="modal__form modal__form_confirmation"
-        action=""
-      >
-        <h2 class="modal__heading modal__heading_confirmation">
-          Are you sure?
-        </h2>
-        <button
-          type="submit"
-          aria-label="Yes"
-          class="modal__save-button modal__save-button_confirmation"
-        >
-          Yes
-        </button>
+    <div class="modal" id="confirmation-modal">
+      <div class="modal__container">
         <button
           type="button"
           aria-label="close"
           class="modal__close-button"
         ></button>
-      </form>
+        <form
+          name="confirmation-form"
+          class="modal__form modal__form_confirmation"
+          action=""
+        >
+          <h2 class="modal__heading modal__heading_confirmation">
+            Are you sure?
+          </h2>
+          <button
+            type="submit"
+            aria-label="Yes"
+            class="modal__save-button modal__save-button_confirmation"
+          >
+            Yes
+          </button>
+        </form>
+      </div>
     </div>
-    <div class="modal modal_update-avatar">
-      <form action="" name="update-avatar" class="modal__form">
-        <h2 class="modal__heading">Change profile picture</h2>
-        <label for="avatar" class="modal__label">
-          <input
-            type="url"
-            id="avatar"
-            name="avatar"
-            class="modal__input"
-            placeholder="Avatar Url"
-            required
-          />
-        </label>
-      </form>
-      <button class="modal__save-button" type="submit" aria-label="save">
-        Save
-      </button>
-      <button
-        class="modal__close-button"
-        type="button"
-        aria-label="close"
-      ></button>
+    <div class="modal" id="updateAvatarModal">
+      <div class="modal__container">
+        <button
+          class="modal__close-button"
+          type="button"
+          aria-label="close"
+        ></button>
+        <form
+          action=""
+          name="update-avatar"
+          class="modal__form"
+          id="updateAvatarForm"
+        >
+          <h2 class="modal__heading">Change profile picture</h2>
+          <label for="avatar" class="modal__label">
+            <input
+              type="url"
+              id="avatar"
+              name="avatarLink"
+              class="modal__input"
+              placeholder="Avatar Url"
+              minlength="2"
+              required
+            />
+          </label>
+        </form>
+        <button class="modal__save-button" type="submit" aria-label="save">
+          Save
+        </button>
+      </div>
     </div>
   </body>
 </html>

@@ -106,7 +106,7 @@ export default class Api {
       .catch((err) => console.error(`OOPS! try again ${err}`));
   }
 
-  updateProfilePic() {
+  updateAvatar(avatar) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: {

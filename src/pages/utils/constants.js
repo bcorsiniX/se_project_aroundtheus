@@ -37,11 +37,13 @@ export const options = {
 };
 
 export const profileEditButton = document.querySelector("#profile-edit-button");
-export const profileEditForm = document.forms["modal-form"];
 export const newPlaceButton = document.querySelector("#newPlaceButton");
-export const newPlaceModalForm = document.forms["newPlaceModal-form"];
+export const updateAvatarButton = document.querySelector("#updateAvatarButton");
 export const imageModal = document.querySelector("#imageModal");
 export const profileNameInput = document.querySelector("#profile-name-input");
 export const profileDescriptionInput = document.querySelector(
   "#profile-description-input"
 );
+export const updateAvatarForm = document.forms["updateAvatarForm"];
+export const profileEditForm = document.forms["modal-form"];
+export const newPlaceModalForm = document.forms["newPlaceModal-form"];
