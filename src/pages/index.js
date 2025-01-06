@@ -23,6 +23,14 @@ const api = new Api({
   authToken: "b9cb702e-163c-48e3-b3a3-87283a0a78b9",
 });
 
+function changeButtonText() {
+  document
+    .querySelector(".modal__save-button")
+    .addEventListener("click", () => {
+      this.textContent = "Saving...";
+    });
+}
+
 function renderCard(cardData) {
   const card = new Card(
     cardData,
@@ -74,12 +82,14 @@ function handleProfileEditSubmit(inputValues) {
 }
 
 function handleUpdateAvatarSubmit(inputValues) {
-  const { avatar } = inputValues.avatarLink;
+  changeButtonText();
+  const avatar = inputValues.avatarLink;
   api
     .updateAvatar(avatar)
-    .then((thing) => {
+    .then((data) => {
       const profileImage = document.querySelector(".profile__image");
-      profileImage.src = thing;
+      profileImage.src = data.avatar;
+      updateAvatarPopup.close();
     })
     .catch((err) => console.error(err));
 }

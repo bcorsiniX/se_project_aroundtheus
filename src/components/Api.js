@@ -111,6 +111,7 @@ export default class Api {
       method: "PATCH",
       headers: {
         authorization: this._authToken,
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         avatar,
