@@ -5,6 +5,7 @@ import Section from "../components/Section";
 import UserInfo from "../components/UserInfo";
 import PopupWithForm from "../components/PopupWithForm";
 import PopupWithImage from "../components/PopupWithImage";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 import {
   initialCards,
   options,
@@ -78,6 +79,10 @@ function handleProfileEditSubmit(inputValues) {
     .catch((err) => console.error(err));
 }
 
+function handleConfirmDeleteSubmit(card) {
+  api.deleteCard(card.getId).then;
+}
+
 function handleUpdateAvatarSubmit(inputValues) {
   const avatar = inputValues.avatarLink;
   updateAvatarPopup.changeButtonText(true);
@@ -90,10 +95,6 @@ function handleUpdateAvatarSubmit(inputValues) {
       updateAvatarPopup.close();
     })
     .catch((err) => console.error(err));
-}
-
-function handleConfirmDeleteSubmit(card) {
-  api.deleteCard(card.getId);
 }
 
 function handleImageClick(name, link) {
