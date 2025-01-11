@@ -23,14 +23,6 @@ const api = new Api({
   authToken: "b9cb702e-163c-48e3-b3a3-87283a0a78b9",
 });
 
-function changeButtonText() {
-  document
-    .querySelector(".modal__save-button")
-    .addEventListener("click", () => {
-      this.textContent = "Saving...";
-    });
-}
-
 function renderCard(cardData) {
   const card = new Card(
     cardData,
@@ -56,42 +48,52 @@ api.getUserInfo().then((info) => {
   userInfo.setUserInfo({ title: info.name, description: info.about });
 });
 
-function handleDeleteCardClick(card) {
-  api.deleteCard(card.getId(card));
+function handleDeleteCardClick() {
+  confirmationPopup.open();
 }
 
 function handleNewPlaceSubmit(inputValues) {
   const cardData = { name: inputValues.title, link: inputValues.link };
+  newCardPopup.changeButtonText(true);
   api
     .addCard(cardData)
     .then((newCard) => {
       renderCard(newCard);
+      newCardPopup.changeButtonText(false);
       newCardPopup.close();
     })
     .catch((error) => console.error(error));
 }
 
 function handleProfileEditSubmit(inputValues) {
+  editProfilePopup.changeButtonText(true);
   api
     .editUserInfo({ name: inputValues.title, about: inputValues.description })
     .then((userData) => {
       userInfo.setUserInfo(inputValues);
+      editProfilePopup.changeButtonText(false);
+
       editProfilePopup.close();
     })
     .catch((err) => console.error(err));
 }
 
 function handleUpdateAvatarSubmit(inputValues) {
-  changeButtonText();
   const avatar = inputValues.avatarLink;
+  updateAvatarPopup.changeButtonText(true);
   api
     .updateAvatar(avatar)
     .then((data) => {
       const profileImage = document.querySelector(".profile__image");
       profileImage.src = data.avatar;
+      updateAvatarPopup.changeButtonText(false);
       updateAvatarPopup.close();
     })
     .catch((err) => console.error(err));
+}
+
+function handleConfirmDeleteSubmit(card) {
+  api.deleteCard(card.getId);
 }
 
 function handleImageClick(name, link) {
@@ -117,6 +119,13 @@ const updateAvatarPopup = new PopupWithForm(
     popupSelector: "#updateAvatarModal",
   },
   handleUpdateAvatarSubmit
+);
+
+const confirmationPopup = new PopupWithForm(
+  {
+    popupSelector: "#confirmation-modal",
+  },
+  handleConfirmDeleteSubmit
 );
 
 const popupWithImage = new PopupWithImage({ popupSelector: "#imageModal" });

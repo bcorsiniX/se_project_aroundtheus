@@ -3,7 +3,7 @@ export default class Card {
   constructor(cardData, cardSelector, handleImageClick, handleDeleteCardClick) {
     this.name = cardData.name;
     this.link = cardData.link;
-    this._id = cardData.id;
+    this._id = cardData._id;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleDeleteCardClick = handleDeleteCardClick;
@@ -31,7 +31,7 @@ export default class Card {
       .classList.toggle("card__like-button_active");
   }
 
-  getId(card) {
+  getId() {
     return this._id;
   }
 
