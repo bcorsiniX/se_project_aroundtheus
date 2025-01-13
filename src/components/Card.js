@@ -35,9 +35,9 @@ export default class Card {
     return this._id;
   }
 
-  // _handleDeleteCard() {
-  //   this._element.remove();
-  // }
+  handleRemoveCard() {
+    this._element.remove();
+  }
 
   _getTemplate() {
     return document

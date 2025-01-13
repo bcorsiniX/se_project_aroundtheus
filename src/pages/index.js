@@ -79,8 +79,15 @@ function handleProfileEditSubmit(inputValues) {
     .catch((err) => console.error(err));
 }
 
-function handleConfirmDeleteSubmit(card) {
-  api.deleteCard(card.getId).then;
+function handleDeleteConfirmation(card) {
+  confirmationPopup.open();
+  api
+    .deleteCard(card.getId)
+    .then(() => {
+      card.handleRemoveCard();
+      confirmationPopup.close();
+    })
+    .catch((err) => console.error(err));
 }
 
 function handleUpdateAvatarSubmit(inputValues) {
@@ -122,11 +129,11 @@ const updateAvatarPopup = new PopupWithForm(
   handleUpdateAvatarSubmit
 );
 
-const confirmationPopup = new PopupWithForm(
+const confirmationPopup = new PopupWithConfirmation(
   {
     popupSelector: "#confirmation-modal",
   },
-  handleConfirmDeleteSubmit
+  handleDeleteConfirmation
 );
 
 const popupWithImage = new PopupWithImage({ popupSelector: "#imageModal" });
