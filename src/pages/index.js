@@ -46,11 +46,20 @@ api.getInitialCards().then((cards) => {
 });
 
 api.getUserInfo().then((info) => {
-  userInfo.setUserInfo({ title: info.name, description: info.about });
+  userInfo.setUserInfo({ title: info.name, desgitription: info.about });
 });
 
-function handleDeleteCardClick() {
+function handleDeleteCardClick(card) {
   confirmationPopup.open();
+  confirmationPopup.setSubmitAction(() => {
+    api
+      .deleteCard(card.getId)
+      .then(() => {
+        card.handleRemoveCard();
+        confirmationPopup.close();
+      })
+      .catch((err) => console.error(err));
+  });
 }
 
 function handleNewPlaceSubmit(inputValues) {
@@ -75,17 +84,6 @@ function handleProfileEditSubmit(inputValues) {
       editProfilePopup.changeButtonText(false);
 
       editProfilePopup.close();
-    })
-    .catch((err) => console.error(err));
-}
-
-function handleDeleteConfirmation(card) {
-  confirmationPopup.open();
-  api
-    .deleteCard(card.getId)
-    .then(() => {
-      card.handleRemoveCard();
-      confirmationPopup.close();
     })
     .catch((err) => console.error(err));
 }
@@ -129,12 +127,9 @@ const updateAvatarPopup = new PopupWithForm(
   handleUpdateAvatarSubmit
 );
 
-const confirmationPopup = new PopupWithConfirmation(
-  {
-    popupSelector: "#confirmation-modal",
-  },
-  handleDeleteConfirmation
-);
+const confirmationPopup = new PopupWithConfirmation({
+  popupSelector: "#confirmation-modal",
+});
 
 const popupWithImage = new PopupWithImage({ popupSelector: "#imageModal" });
 
@@ -155,6 +150,7 @@ popupWithImage.setEventListeners();
 editProfilePopup.setEventListeners();
 newCardPopup.setEventListeners();
 updateAvatarPopup.setEventListeners();
+confirmationPopup.setEventListeners();
 
 newPlaceButton.addEventListener("click", () => {
   newCardPopup.open();

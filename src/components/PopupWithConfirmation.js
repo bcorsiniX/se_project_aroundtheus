@@ -6,11 +6,14 @@ export default class PopupWithConfirmation extends Popup {
     this._confirmButton = document.querySelector(
       ".modal__save-button_confirmation"
     );
-    this._handleConfirmDeleteSubmit = handleConfirmDeleteSubmit;
+  }
+
+  setSubmitAction(deleteCard) {
+    this._handleConfirmDeleteSubmit = deleteCard;
   }
 
   setEventListeners() {
-    this._confirmButton.setEventListener("click", (e) => {
+    this._confirmButton.addEventListener("click", (e) => {
       e.preventDefault();
       this._handleConfirmDeleteSubmit();
     });
