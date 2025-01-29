@@ -29,7 +29,8 @@ function renderCard(cardData) {
     cardData,
     "#card-template",
     handleImageClick,
-    handleDeleteCardClick
+    handleDeleteCardClick,
+    handleLikeCard
   ).getView();
   cardSection.addItem(card);
   return card;
@@ -53,13 +54,25 @@ function handleDeleteCardClick(card) {
   confirmationPopup.open();
   confirmationPopup.setSubmitAction(() => {
     api
-      .deleteCard(card.getId)
+      .deleteCard(card.getId())
       .then(() => {
         card.handleRemoveCard();
         confirmationPopup.close();
       })
       .catch((err) => console.error(err));
   });
+}
+
+function handleLikeCard(card) {
+  const apiCall = card.isLiked
+    ? api.unlikeCard(card.getId())
+    : api.likeCard(card.getId());
+  apiCall
+    .then(() => {
+      card.isLiked = !card.isLiked;
+      card.handleLikeIcon();
+    })
+    .catch((err) => console.error(err));
 }
 
 function handleNewPlaceSubmit(inputValues) {

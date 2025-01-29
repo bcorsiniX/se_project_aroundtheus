@@ -1,18 +1,25 @@
 import Api from "./Api";
 export default class Card {
-  constructor(cardData, cardSelector, handleImageClick, handleDeleteCardClick) {
+  constructor(
+    cardData,
+    cardSelector,
+    handleImageClick,
+    handleDeleteCardClick,
+    handleLikeCard
+  ) {
     this.name = cardData.name;
     this.link = cardData.link;
     this._id = cardData._id;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleDeleteCardClick = handleDeleteCardClick;
+    this._handleLikeCard = handleLikeCard;
   }
 
   _setEventListeners() {
     this._element
       .querySelector(".card__like-button")
-      .addEventListener("click", () => this._handleLikeIcon());
+      .addEventListener("click", () => this._handleLikeCard(this));
 
     this._element
       .querySelector(".card__delete-button")
@@ -25,7 +32,7 @@ export default class Card {
       });
   }
 
-  _handleLikeIcon() {
+  handleLikeIcon() {
     this._element
       .querySelector(".card__like-button")
       .classList.toggle("card__like-button_active");
