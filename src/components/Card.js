@@ -10,6 +10,7 @@ export default class Card {
     this.name = cardData.name;
     this.link = cardData.link;
     this._id = cardData._id;
+    this._isLiked = cardData.isLiked;
     this._cardSelector = cardSelector;
     this._handleImageClick = handleImageClick;
     this._handleDeleteCardClick = handleDeleteCardClick;
@@ -60,6 +61,7 @@ export default class Card {
     this._element.querySelector(".card__image").alt = this.name;
     this._element.querySelector(".card__title").textContent = this.name;
 
+    if (this._isLiked) this.handleLikeIcon();
     this._setEventListeners();
 
     return this._element;

@@ -47,7 +47,7 @@ api.getInitialCards().then((cards) => {
 });
 
 api.getUserInfo().then((info) => {
-  userInfo.setUserInfo({ title: info.name, desgitription: info.about });
+  userInfo.setUserInfo({ title: info.name, description: info.about });
 });
 
 function handleDeleteCardClick(card) {
