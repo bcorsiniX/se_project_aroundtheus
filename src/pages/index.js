@@ -64,7 +64,7 @@ function handleDeleteCardClick(card) {
 }
 
 function handleLikeCard(card) {
-  const apiCall = card.isLiked
+  const apiCall = card._isLiked
     ? api.unlikeCard(card.getId())
     : api.likeCard(card.getId());
   apiCall
@@ -106,13 +106,17 @@ function handleUpdateAvatarSubmit(inputValues) {
   updateAvatarPopup.changeButtonText(true);
   api
     .updateAvatar(avatar)
-    .then((data) => {
-      const profileImage = document.querySelector(".profile__image");
-      profileImage.src = data.avatar;
+    .then((img) => {
+      setProfileImage(img);
       updateAvatarPopup.changeButtonText(false);
       updateAvatarPopup.close();
     })
     .catch((err) => console.error(err));
+}
+
+function setProfileImage(img) {
+  const profileImage = document.querySelector(".profile__image");
+  profileImage.src = img.avatar;
 }
 
 function handleImageClick(name, link) {
@@ -179,4 +183,11 @@ profileEditButton.addEventListener("click", () => {
 
 updateAvatarButton.addEventListener("click", () => {
   updateAvatarPopup.open();
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  api
+    .getAvatar()
+    .then((img) => setProfileImage(img))
+    .catch((err) => console.error(err));
 });

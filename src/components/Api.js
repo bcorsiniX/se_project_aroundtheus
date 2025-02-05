@@ -13,7 +13,7 @@ export default class Api {
       .then((res) => {
         return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
       })
-      .catch((err) => console.error(`OOPS! TRY AGAIN ${err}`));
+      .catch((err) => console.error(`Problem getting cards initially ${err}`));
   }
 
   addCard({ name, link }) {
@@ -31,7 +31,7 @@ export default class Api {
       .then((res) => {
         return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
       })
-      .catch((err) => console.error(`OOPS! try again ${err}`));
+      .catch((err) => console.error(`Card not successfully added ${err}`));
   }
 
   deleteCard(cardId) {
@@ -45,7 +45,7 @@ export default class Api {
       .then((res) =>
         res.ok ? res.json() : Promise.reject(`Error: ${res.status}`)
       )
-      .catch((err) => console.error(`OOPS! try again: ${err}`));
+      .catch((err) => console.error(`Card not successfully deleted ${err}`));
   }
 
   likeCard(cardId) {
@@ -59,7 +59,7 @@ export default class Api {
       .then((res) => {
         return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
       })
-      .catch((err) => console.error(`OOPS! try again: ${err}`));
+      .catch((err) => console.error(`Card not successfully liked ${err}`));
   }
 
   unlikeCard(cardId) {
@@ -73,7 +73,7 @@ export default class Api {
       .then((res) => {
         return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
       })
-      .catch((err) => console.error(`OOPS! try again: ${err}`));
+      .catch((err) => console.error(`Like not removed ${err}`));
   }
 
   getUserInfo() {
@@ -85,7 +85,9 @@ export default class Api {
       .then((res) => {
         return res.ok ? res.json() : Promise.reject(`Error: ${res.status}`);
       })
-      .catch((err) => console.error(`OOPS! try again ${err}`));
+      .catch((err) =>
+        console.error(`User info not fetched from server ${err}`)
+      );
   }
 
   editUserInfo({ name, about }) {
@@ -103,7 +105,9 @@ export default class Api {
       .then((res) => {
         return res.ok ? res.json() : Promise.reject(`ERROR: ${res.status}`);
       })
-      .catch((err) => console.error(`OOPS! try again ${err}`));
+      .catch((err) =>
+        console.error(`User info not successfully updated ${err}`)
+      );
   }
 
   updateAvatar(avatar) {
@@ -120,6 +124,18 @@ export default class Api {
       .then((res) => {
         return res.ok ? res.json() : Promise.reject(`ERROR: ${res.status}`);
       })
-      .catch((err) => console.error(`OOPS! try again ${err}`));
+      .catch((err) => console.error(`Avatar not successfully updated ${err}`));
+  }
+
+  getAvatar() {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      headers: {
+        authorization: this._authToken,
+      },
+    })
+      .then((res) => {
+        return res.ok ? res.json() : Promise.reject(`ERROR: ${res.status}`);
+      })
+      .catch((err) => console.error(`Avatar not fetched from server`));
   }
 }
